@@ -101,6 +101,15 @@
             this.StartDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TrayStartCheckBox = new System.Windows.Forms.CheckBox();
+            this.PowerGroupBox = new System.Windows.Forms.GroupBox();
+            this.PowerOptionOff = new System.Windows.Forms.RadioButton();
+            this.PowerOptionTray = new System.Windows.Forms.RadioButton();
+            this.Option_label2 = new System.Windows.Forms.Label();
+            this.Option_Label3 = new System.Windows.Forms.Label();
+            this.WindowsAutoStartCheckBox = new System.Windows.Forms.CheckBox();
+            this.Option_Label1 = new System.Windows.Forms.Label();
             this.DashboardGraphToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -138,6 +147,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.EnhanceGraph75)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DetailGraphPictureBox)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.PowerGroupBox.SuspendLayout();
             this.TrayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,7 +194,6 @@
             this.Option.Size = new System.Drawing.Size(55, 55);
             this.Option.TabIndex = 3;
             this.Option.UseVisualStyleBackColor = false;
-            this.Option.Visible = false;
             this.Option.Click += new System.EventHandler(this.Option_Click);
             // 
             // Exit
@@ -218,7 +228,6 @@
             this.Tendency.Size = new System.Drawing.Size(55, 55);
             this.Tendency.TabIndex = 2;
             this.Tendency.UseVisualStyleBackColor = false;
-            this.Tendency.Visible = false;
             this.Tendency.Click += new System.EventHandler(this.Tendency_Click);
             // 
             // LogDetail
@@ -925,16 +934,121 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.White;
+            this.tabPage4.Controls.Add(this.label2);
+            this.tabPage4.Controls.Add(this.TrayStartCheckBox);
+            this.tabPage4.Controls.Add(this.PowerGroupBox);
+            this.tabPage4.Controls.Add(this.Option_label2);
+            this.tabPage4.Controls.Add(this.Option_Label3);
+            this.tabPage4.Controls.Add(this.WindowsAutoStartCheckBox);
+            this.tabPage4.Controls.Add(this.Option_Label1);
             this.tabPage4.Location = new System.Drawing.Point(4, 5);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(762, 531);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.UseVisualStyleBackColor = true;
             this.tabPage4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 9.749998F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.DimGray;
+            this.label2.Location = new System.Drawing.Point(102, 198);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(211, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "프로그램 실행시 트레이에서 시작됩니다.";
+            // 
+            // TrayStartCheckBox
+            // 
+            this.TrayStartCheckBox.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TrayStartCheckBox.Location = new System.Drawing.Point(81, 162);
+            this.TrayStartCheckBox.Name = "TrayStartCheckBox";
+            this.TrayStartCheckBox.Size = new System.Drawing.Size(237, 38);
+            this.TrayStartCheckBox.TabIndex = 8;
+            this.TrayStartCheckBox.Text = "트레이로 실행";
+            this.TrayStartCheckBox.UseVisualStyleBackColor = true;
+            this.TrayStartCheckBox.CheckedChanged += new System.EventHandler(this.TrayStart_CheckedChanged);
+            // 
+            // PowerGroupBox
+            // 
+            this.PowerGroupBox.Controls.Add(this.PowerOptionOff);
+            this.PowerGroupBox.Controls.Add(this.PowerOptionTray);
+            this.PowerGroupBox.Location = new System.Drawing.Point(81, 257);
+            this.PowerGroupBox.Name = "PowerGroupBox";
+            this.PowerGroupBox.Size = new System.Drawing.Size(373, 53);
+            this.PowerGroupBox.TabIndex = 6;
+            this.PowerGroupBox.TabStop = false;
+            // 
+            // PowerOptionOff
+            // 
+            this.PowerOptionOff.AutoSize = true;
+            this.PowerOptionOff.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PowerOptionOff.Location = new System.Drawing.Point(215, 18);
+            this.PowerOptionOff.Name = "PowerOptionOff";
+            this.PowerOptionOff.Size = new System.Drawing.Size(130, 29);
+            this.PowerOptionOff.TabIndex = 6;
+            this.PowerOptionOff.Text = "프로그램 종료";
+            this.PowerOptionOff.UseVisualStyleBackColor = true;
+            this.PowerOptionOff.CheckedChanged += new System.EventHandler(this.PowerOption_CheckedChanged);
+            // 
+            // PowerOptionTray
+            // 
+            this.PowerOptionTray.AutoSize = true;
+            this.PowerOptionTray.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PowerOptionTray.Location = new System.Drawing.Point(21, 18);
+            this.PowerOptionTray.Name = "PowerOptionTray";
+            this.PowerOptionTray.Size = new System.Drawing.Size(149, 29);
+            this.PowerOptionTray.TabIndex = 5;
+            this.PowerOptionTray.Text = "트레이로 최소화";
+            this.PowerOptionTray.UseVisualStyleBackColor = true;
+            this.PowerOptionTray.CheckedChanged += new System.EventHandler(this.PowerOption_CheckedChanged);
+            // 
+            // Option_label2
+            // 
+            this.Option_label2.AutoSize = true;
+            this.Option_label2.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Option_label2.Location = new System.Drawing.Point(58, 77);
+            this.Option_label2.Name = "Option_label2";
+            this.Option_label2.Size = new System.Drawing.Size(91, 27);
+            this.Option_label2.TabIndex = 4;
+            this.Option_label2.Text = "자동 실행";
+            // 
+            // Option_Label3
+            // 
+            this.Option_Label3.AutoSize = true;
+            this.Option_Label3.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Option_Label3.Location = new System.Drawing.Point(58, 227);
+            this.Option_Label3.Name = "Option_Label3";
+            this.Option_Label3.Size = new System.Drawing.Size(91, 27);
+            this.Option_Label3.TabIndex = 3;
+            this.Option_Label3.Text = "닫기 설정";
+            // 
+            // WindowsAutoStartCheckBox
+            // 
+            this.WindowsAutoStartCheckBox.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.WindowsAutoStartCheckBox.Location = new System.Drawing.Point(81, 109);
+            this.WindowsAutoStartCheckBox.Name = "WindowsAutoStartCheckBox";
+            this.WindowsAutoStartCheckBox.Size = new System.Drawing.Size(237, 38);
+            this.WindowsAutoStartCheckBox.TabIndex = 2;
+            this.WindowsAutoStartCheckBox.Text = "윈도우 실행시 자동 실행";
+            this.WindowsAutoStartCheckBox.UseVisualStyleBackColor = true;
+            this.WindowsAutoStartCheckBox.CheckedChanged += new System.EventHandler(this.WindowsAutoStartCheckBox_CheckedChanged);
+            // 
+            // Option_Label1
+            // 
+            this.Option_Label1.AutoSize = true;
+            this.Option_Label1.Font = new System.Drawing.Font("한컴 말랑말랑 Bold", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Option_Label1.Location = new System.Drawing.Point(31, 22);
+            this.Option_Label1.Name = "Option_Label1";
+            this.Option_Label1.Size = new System.Drawing.Size(70, 38);
+            this.Option_Label1.TabIndex = 0;
+            this.Option_Label1.Text = "일반";
             // 
             // TrayIcon
             // 
-            this.TrayIcon.Text = "ASL";
+            this.TrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("TrayIcon.Icon")));
+            this.TrayIcon.Text = "LostArkLog";
             this.TrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIconMouseDoubleClick);
             // 
             // TrayMenu
@@ -1011,6 +1125,10 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DetailGraphPictureBox)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.PowerGroupBox.ResumeLayout(false);
+            this.PowerGroupBox.PerformLayout();
             this.TrayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1093,5 +1211,14 @@
         private Label ImageAnalysisState1;
         private Label ImageAnalysisState2;
         private TabPage tabPage0;
+        private GroupBox PowerGroupBox;
+        private RadioButton PowerOptionOff;
+        private RadioButton PowerOptionTray;
+        private Label Option_label2;
+        private Label Option_Label3;
+        private CheckBox WindowsAutoStartCheckBox;
+        private Label Option_Label1;
+        private Label label2;
+        private CheckBox TrayStartCheckBox;
     }
 }

@@ -1,6 +1,7 @@
 using Google.Cloud.Firestore;
 using LostarkLogProject.AbilityStoneLog;
 using LostarkLogProject.ControllFuncion;
+using Microsoft.Win32;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -37,8 +38,10 @@ namespace LostarkLogProject
 
         private void Init()
         {
-            resourceLoader = new ResourceLoader();
+            LoadOption();
+            AutoTrayRun();
 
+            resourceLoader = new ResourceLoader();
             PictureBox[] itemImages = new PictureBox[] { ItemImage1, ItemImage2, ItemImage3, ItemImage4, ItemImage5, ItemImage6, ItemImage7 }; ;
             Label[] imageNames = new Label[] { ImageName1, ImageName2, ImageName3, ImageName4, ImageName5, ImageName6, ImageName7 }; ;
             Label[] successText = new Label[] { SuccessText1, SuccessText2, SuccessText3, SuccessText4, SuccessText5, SuccessText6, SuccessText7 }; ;
@@ -57,25 +60,26 @@ namespace LostarkLogProject
 
         private async void StartLogger()
         {
-            // 버전 확인
-            var version = firestoreDb.Collection("Version").Document("VersionCheck");
-            var snap = await version.GetSnapshotAsync();
 
-            if (snap.Exists)
-            {
-                var systemVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                var firebaseVersion = snap.ToDictionary();
-                var value = firebaseVersion.Values;
-                foreach (var item in value)
-                {
-                    if (!item.ToString().Equals(systemVer.ToString()))
-                    {
-                        MessageBox.Show("업데이트가 있습니다. 최신버전을 이용해주세요!");
-                        System.Diagnostics.Process.Start(new ProcessStartInfo("https://github.com/Heinul/AbilityStoneLogProject/releases") { UseShellExecute = true });
-                        return;
-                    }
-                }
-            }
+            // 자동시작
+
+            // 버전 확인
+            //var version = firestoreDb.Collection("Version").Document("VersionCheck");
+            //var snap = await version.GetSnapshotAsync();
+
+            //if (snap.Exists)
+            //{
+            //    var systemVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            //    var firebaseVersion = snap.ToDictionary();
+            //    var value = firebaseVersion["Latest"].ToString();
+
+            //    if (!value.Equals(systemVer.ToString()))
+            //    {
+            //        MessageBox.Show("업데이트가 있습니다. 최신버전을 이용해주세요!");
+            //        System.Diagnostics.Process.Start(new ProcessStartInfo("https://github.com/Heinul/AbilityStoneLogProject/releases") { UseShellExecute = true });
+            //        return;
+            //    }
+            //}
 
             //해상도 확인
             if (Screen.PrimaryScreen.Bounds.Height != 1080 && Screen.PrimaryScreen.Bounds.Height != 1440 && Screen.PrimaryScreen.Bounds.Height != 2160 && Screen.PrimaryScreen.Bounds.Height != 2880)
@@ -187,12 +191,19 @@ namespace LostarkLogProject
 
         private void Exit_Click(object sender, EventArgs e)
         {
-            //TrayIcon.Dispose();
-            //System.Diagnostics.Process.GetCurrentProcess().Kill();
-            //Application.Exit();
-            this.WindowState = FormWindowState.Minimized;
-            this.ShowInTaskbar = false;
-            MessageBox.Show("트레이로 이동합니다.");
+            
+            if (PowerOptionTray.Checked)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                this.ShowInTaskbar = false;
+            }
+            else
+            {
+                TrayIcon.Dispose();
+                Process.GetCurrentProcess().Kill();
+                Application.Exit();
+            }
+
         }
 
         private void GraphMouseMove(object sender, EventArgs e)
@@ -208,9 +219,87 @@ namespace LostarkLogProject
                 ImageAnalysisState2.Text = str;
             }));
         }
+
+        private void WindowsAutoStartCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.윈도우자동시작 = WindowsAutoStartCheckBox.Checked;
+            Properties.Settings.Default.Save();
+
+            string regPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+            string programName = "LostArkLog";
+            try
+            {
+                using (var regKey = GetRegKey(regPath, true))
+                {
+                    if (WindowsAutoStartCheckBox.Checked)
+                    {
+                        if (regKey.GetValue(programName) == null)
+                        {
+                            regKey.SetValue(programName, AppDomain.CurrentDomain.BaseDirectory + "\\" + AppDomain.CurrentDomain.FriendlyName);
+                        }
+                    }
+                    else
+                    {
+                        if(regKey.GetValue(programName) != null)
+                        {
+                            regKey.DeleteValue(programName, false);
+                        }
+                    }
+
+                    regKey.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private Microsoft.Win32.RegistryKey GetRegKey(string regPath, bool writable)
+        {
+            return Registry.CurrentUser.OpenSubKey(regPath, writable);
+        }
+
+        private void PowerOption_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.종료버튼옵션 = PowerOptionTray.Checked == true ? true : false;
+            Properties.Settings.Default.Save();
+        }
+
+        private void TrayStart_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.트레이로실행 = TrayStartCheckBox.Checked;
+            Properties.Settings.Default.Save();
+        }
+            private void LoadOption()
+        {
+            if(Properties.Settings.Default.종료버튼옵션 == true)
+            {
+                PowerOptionTray.Checked = true;
+            }
+            else
+            {
+                PowerOptionOff.Checked = true;
+            }
+
+            WindowsAutoStartCheckBox.Checked = Properties.Settings.Default.윈도우자동시작;
+            TrayStartCheckBox.Checked = Properties.Settings.Default.트레이로실행;
+        }
         #endregion
 
         #region 트레이아이콘
+
+        private void AutoTrayRun()
+        {
+            if (TrayStartCheckBox.Checked)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                this.ShowInTaskbar = false;
+                this.Visible = false;
+                TrayIcon.Visible = true;
+                TrayIcon.ContextMenuStrip = TrayMenu;
+            }
+        }
 
         private void LoadTrayIcon(object? sender, EventArgs e)
         {
@@ -247,5 +336,7 @@ namespace LostarkLogProject
         }
 
         #endregion
+
+       
     }
 }

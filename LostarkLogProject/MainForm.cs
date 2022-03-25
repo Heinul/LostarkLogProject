@@ -1,6 +1,7 @@
 using Google.Cloud.Firestore;
 using LostarkLogProject.AbilityStoneLog;
 using LostarkLogProject.ControllFuncion;
+using LostarkLogProject.Properties;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -38,6 +39,8 @@ namespace LostarkLogProject
 
         private void Init()
         {
+            //new DisplayCapture().TestDisplayCapture(Resources._3440_1440_AbilityImage);
+
             LoadOption();
             AutoTrayRun();
 
@@ -55,10 +58,12 @@ namespace LostarkLogProject
             string path = AppDomain.CurrentDomain.BaseDirectory + @"asl-project-80aca-7ea4b7df82f1.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             firestoreDb = FirestoreDb.Create("asl-project-80aca");
+
+            imageAnalysis = new ImageAnalysis(this, resourceLoader, firestoreDb);
         }
 
 
-        private async void StartLogger()
+        private void StartLogger()
         {
 
             // 자동시작

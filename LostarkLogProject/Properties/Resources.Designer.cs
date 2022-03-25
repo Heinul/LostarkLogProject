@@ -73,6 +73,16 @@ namespace LostarkLogProject.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap _3440_1440_AbilityImage {
+            get {
+                object obj = ResourceManager.GetObject("_3440_1440_AbilityImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap _35p {
             get {
                 object obj = ResourceManager.GetObject("_35p", resourceCulture);

@@ -21,7 +21,7 @@ namespace LostarkLogProject.AbilityStoneLog
 
         public ImageAnalysis(MainForm mainForm, ResourceLoader resourceLoader, FirestoreDb firestoreDb)
         {
-            mainForm = mainForm;
+            this.mainForm = mainForm;
             this.resourceLoader = resourceLoader;
             displayCapture = new DisplayCapture();
             for (int i = 0; i < 3; i++)

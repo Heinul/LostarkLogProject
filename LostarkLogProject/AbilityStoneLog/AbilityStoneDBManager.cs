@@ -83,6 +83,7 @@ namespace LostarkLogProject.AbilityStoneLog
                 string sql = $"SELECT * FROM ENGRAVINGDATA WHERE ENGRAVINGNAME = '{engravingName}'";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
+                Console.WriteLine(sql);
 
                 if (ds.Tables.Count > 0)
                     return ds.Tables[0].Rows;
@@ -105,6 +106,7 @@ namespace LostarkLogProject.AbilityStoneLog
                 string sql = $"SELECT * FROM ENGRAVINGDATA WHERE PERCENTAGE = {percentage}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
+                Console.WriteLine(sql);
 
                 if (ds.Tables.Count > 0) return ds.Tables[0].Rows;
                 else return null;
@@ -251,44 +253,6 @@ namespace LostarkLogProject.AbilityStoneLog
                     string sql = $"INSERT INTO ENGRAVINGDATA('PERCENTAGE', 'ENGRAVINGNAME', 'SUCCESS', 'ADJUSTMENT', 'DIGIT', 'TIMESTAMP') VALUES ({percentage}, '{engravingName}', {success}, {adjustment}, {digit}, {DateTime.Now.Ticks})";
                     SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                     Console.WriteLine(cmd.CommandText);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-                throw;
-            }
-        }
-
-        public void DeleteAll(string table)
-        {
-            try
-            {
-                using (SQLiteConnection conn = new SQLiteConnection(DBpath))
-                {
-                    conn.Open();
-                    string sql = $"DELETE FROM {table}";
-                    SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-                throw;
-            }
-        }
-
-        public void DeleteDetail(string table, string wherecol, string wherevalue)
-        {
-            try
-            {
-                using (SQLiteConnection conn = new SQLiteConnection(DBpath))
-                {
-                    conn.Open();
-                    string sql = $"DELETE FROM {table} WHERE {wherecol}='{wherevalue}'";
-                    SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                     cmd.ExecuteNonQuery();
                 }
             }

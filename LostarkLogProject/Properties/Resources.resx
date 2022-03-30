@@ -181,6 +181,9 @@
   <data name="강화방패" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\강화방패.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="강화작업_대기중" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\강화작업 대기중.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="결투의대가" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\결투의대가.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -267,6 +270,9 @@
   </data>
   <data name="어빌리티스톤_세공_기록중" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\어빌리티스톤 세공 기록중.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="에러" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\에러.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="에테르포식자" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\에테르포식자.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

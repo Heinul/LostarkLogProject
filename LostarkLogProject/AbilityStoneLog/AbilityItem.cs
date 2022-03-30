@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using LostarkLogProject.Properties;
 
 namespace LostarkLogProject.AbilityStoneLog
 {
@@ -31,7 +32,7 @@ namespace LostarkLogProject.AbilityStoneLog
 
         public void SendData()
         {
-            CollectionReference coll = firestoreDb.Collection($"EngravingDataBase_{DateTime.Now.ToString("yyMMdd")}_{GetMacAddress()}");
+            CollectionReference coll = firestoreDb.Collection($"EngravingDataBase");
             Dictionary<string, object> data = new Dictionary<string, object>()
             {
                 {"Percentage", percentage},
@@ -39,16 +40,11 @@ namespace LostarkLogProject.AbilityStoneLog
                 {"Success", success },
                 {"Adjusment", adjustment},
                 {"Digit", digit},
-                {"MAC", GetMacAddress() },
+                {"UID", Settings.Default.UID },
                 {"Timestamp", Timestamp.FromDateTime(DateTime.UtcNow) }
             };
             coll.AddAsync(data);
-            Console.WriteLine("Send To Server");
-        }
-
-        private string GetMacAddress()
-        {
-            return System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces()[0].GetPhysicalAddress().ToString();
+            Console.WriteLine("Send To Server With AbilityStone");
         }
 
         public string GetEngravingName()

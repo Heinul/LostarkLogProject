@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace LostarkLogProject.ControllFuncion
         bool lostarkState = false;
         MainForm mainForm;
         DisplayCapture displayCapture;
-        public ProcessDetector(MainForm mainForm, ResourceLoader resourceLoader)
+        public ProcessDetector(MainForm mainForm, ResourceLoader resourceLoader, FirestoreDb firestoreDb)
         {
             this.mainForm = mainForm;
-            displayCapture = new DisplayCapture(resourceLoader);
+            displayCapture = new DisplayCapture(mainForm, resourceLoader, firestoreDb);
         }
 
         private void ProcessDetection()
@@ -28,10 +29,7 @@ namespace LostarkLogProject.ControllFuncion
                     if (lostarkState == false)
                     {
                         lostarkState = true;
-                        //mainForm.SetStateImage(1);
-                        //mainForm.SetImageAnalysisStateText("강화작업 대기중");
-                        //mainForm.StartImageAnalysis();
-
+                        mainForm.SetStateImage(1);
                         displayCapture.StartDisplayCapture();
                     }
                 }
@@ -40,10 +38,7 @@ namespace LostarkLogProject.ControllFuncion
                     if (lostarkState == true)
                     {
                         lostarkState = false;
-                        //mainForm.SetStateImage(0);
-                        //mainForm.SetImageAnalysisStateText("로스트아크 실행 대기중");
-                        //mainForm.StopImageAnalysis();
-
+                        mainForm.SetStateImage(0);
                         displayCapture.StopDisplayCapture();
                     }
                 }

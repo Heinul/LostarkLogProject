@@ -1,6 +1,7 @@
 using Google.Cloud.Firestore;
 using LostarkLogProject.AbilityStoneLog;
 using LostarkLogProject.ControllFuncion;
+using LostarkLogProject.Properties;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -31,11 +32,9 @@ namespace LostarkLogProject
         }
 
         DashBoardPage dashboard;
-        AbilityStoneImageAnalysis imageAnalysis;
         ResourceLoader resourceLoader;
         DetailPage detailPage;
         FirestoreDb firestoreDb;
-        string UID = "";
 
         private void Init()
         {
@@ -53,11 +52,10 @@ namespace LostarkLogProject
             Label[] successPercentage = { Detail25, Detail35, Detail45, Detail55, Detail65, Detail75 };
             detailPage = new DetailPage(this, StartDateTimePicker, EndDateTimePicker, successPercentage, DetailGraphPictureBox);
 
-            string path = AppDomain.CurrentDomain.BaseDirectory + @"asl-project-80aca-7ea4b7df82f1.json";
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"lostarklogproject-18d6693e2647.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-            firestoreDb = FirestoreDb.Create("asl-project-80aca");
+            firestoreDb = FirestoreDb.Create("lostarklogproject");
 
-            imageAnalysis = new AbilityStoneImageAnalysis(this, resourceLoader, firestoreDb);
         }
 
         private async Task StartLoggerAsync()
@@ -77,7 +75,7 @@ namespace LostarkLogProject
                     if (!value.Equals(systemVer.ToString()))
                     {
                         MessageBox.Show("업데이트가 있습니다. 최신버전을 이용해주세요!");
-                        System.Diagnostics.Process.Start(new ProcessStartInfo("https://github.com/Heinul/AbilityStoneLogProject/releases") { UseShellExecute = true });
+                        System.Diagnostics.Process.Start(new ProcessStartInfo("https://github.com/Heinul/LostarkLogProject/releases") { UseShellExecute = true });
                         return;
                     }
                 }
@@ -95,15 +93,14 @@ namespace LostarkLogProject
                 {
                     if (!TestModeCheck())
                     {
-                        imageAnalysis = new AbilityStoneImageAnalysis(this, resourceLoader, firestoreDb);
-                        ProcessDetector processDetector = new ProcessDetector(this, resourceLoader);
+                        ProcessDetector processDetector = new ProcessDetector(this, resourceLoader, firestoreDb);
                         processDetector.Run();
                     }
 
                     if (TestModeCheck())
                     {
                         //프로세스 탐지 과정 건너뛰고 바로 이미지 서치 시작
-                        ProcessDetector processDetector = new ProcessDetector(this, resourceLoader);
+                        ProcessDetector processDetector = new ProcessDetector(this, resourceLoader, firestoreDb);
                         processDetector.TestRun();
                     }
 
@@ -116,16 +113,6 @@ namespace LostarkLogProject
         }
 
         #region 이벤트 전달 메서드
-
-        public void StartImageAnalysis()
-        {
-            imageAnalysis.Run();
-        }
-
-        public void StopImageAnalysis()
-        {
-            imageAnalysis.Stop();
-        }
 
         public void AddItemToListBox(string engravingNAme, int percentage, bool success)
         {
@@ -152,30 +139,40 @@ namespace LostarkLogProject
         {
             if (tabControl1.SelectedIndex != 0)
             {
+                dashboard.SetPageState(false);
+                detailPage.SetPageState(false);
+
+                tabControl1.SelectedIndex = 0;
+            }
+        }
+
+        private void AbilityStoneDashBoard_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex != 1)
+            {
                 dashboard.SetPageState(true);
                 dashboard.UpdateDashboard();
 
                 detailPage.SetPageState(false);
 
 
-                tabControl1.SelectedIndex = 0;
+                tabControl1.SelectedIndex = 1;
+
+                
             }
         }
 
-        private void LogDetail_Click(object sender, EventArgs e)
+        private void AbilityStonePage2_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex != 2)
-            {
-                detailPage.SetPageState(true);
-                detailPage.UpdateDetailPage();
+            detailPage.SetPageState(true);
+            detailPage.UpdateDetailPage();
 
-                dashboard.SetPageState(false);
+            dashboard.SetPageState(false);
 
-                tabControl1.SelectedIndex = 2;
-            }
+            tabControl1.SelectedIndex = 2;
         }
 
-        private void Tendency_Click(object sender, EventArgs e)
+        private void TripodDashBorad_Click(object sender, EventArgs e)
         {
             if (tabControl1.SelectedIndex != 3)
             {
@@ -292,15 +289,25 @@ namespace LostarkLogProject
                 PowerOptionOff.Checked = true;
             }
 
-            //if(Settings.Default.UID == "")
-            //{
-            //    Settings.Default.UID = Guid.NewGuid().ToString();
-            //    Settings.Default.Save();
-            //}
-            //else
-            //{
-            //    UID = Settings.Default.UID;
-            //}
+            if (!TestModeCheck())
+            {
+                if (Settings.Default.UID == "")
+                {
+                    Settings.Default.UID = Guid.NewGuid().ToString();
+                    Settings.Default.Save();
+                    UID_Label.Text = Settings.Default.UID;
+                }
+                else
+                {
+                    UID_Label.Text = Settings.Default.UID;
+                }
+            }
+            else
+            {
+                Settings.Default.UID = "";
+                Settings.Default.Save();
+                UID_Label.Text = "TestMode 실행중";
+            }
 
             WindowsAutoStartCheckBox.Checked = Properties.Settings.Default.윈도우자동시작;
             TrayStartCheckBox.Checked = Properties.Settings.Default.트레이로실행;
@@ -318,6 +325,7 @@ namespace LostarkLogProject
                         break;
                     case 1:
                         // 동작 대기중
+                        LLStateImage.Image = Properties.Resources.강화작업_대기중; ;
                         break;
                     case 2:
                         // 어빌리티스톤 세공 인식
@@ -329,11 +337,18 @@ namespace LostarkLogProject
                         break;
                     case 4:
                         // 에러
+                        LLStateImage.Image = Properties.Resources.에러;
                         break;
                 }
             }));
             
         }
+
+        private void UID_Label_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(UID_Label.Text);
+        }
+
         #endregion
 
         #region 트레이아이콘
@@ -392,6 +407,7 @@ namespace LostarkLogProject
         {
             return TestMode;
         }
-       
+
+        
     }
 }

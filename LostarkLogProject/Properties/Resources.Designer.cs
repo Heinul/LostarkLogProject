@@ -273,6 +273,16 @@ namespace LostarkLogProject.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap 강화작업_대기중 {
+            get {
+                object obj = ResourceManager.GetObject("강화작업_대기중", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap 결투의대가 {
             get {
                 object obj = ResourceManager.GetObject("결투의대가", resourceCulture);
@@ -556,6 +566,16 @@ namespace LostarkLogProject.Properties {
         internal static System.Drawing.Bitmap 어빌리티스톤_세공_기록중 {
             get {
                 object obj = ResourceManager.GetObject("어빌리티스톤_세공_기록중", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 에러 {
+            get {
+                object obj = ResourceManager.GetObject("에러", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

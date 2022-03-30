@@ -1,22 +1,24 @@
 ﻿using Google.Cloud.Firestore;
 using LostarkLogProject.AbilityStoneLog;
+using LostarkLogProject.TripodLog;
 using OpenCvSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LostarkLogProject.ControllFunction
 {
     internal class ImageAnalysis
     {
+        MainForm mainForm;
         ResourceLoader resourceLoader;
         FirestoreDb firestoreDb;
-        public ImageAnalysis(ResourceLoader resourceLoader, FirestoreDb firestoreDb)
+
+        public ImageAnalysis(MainForm mainForm, ResourceLoader resourceLoader, FirestoreDb firestoreDb)
         {
+            this.mainForm = mainForm;
             this.resourceLoader = resourceLoader;
             this.firestoreDb = firestoreDb;
+
+            for (int i = 0; i < 3; i++)
+                previousEngravingSuccessData[i] = new int[10];
         }
         Queue<Mat> displayQueue = new Queue<Mat>();
         Queue<int> tokenQueue = new Queue<int>();
@@ -35,6 +37,7 @@ namespace LostarkLogProject.ControllFunction
             {
                 threadState = true;
                 new Thread(ImageAnalysisThread).Start();
+                new Thread(SaveData).Start();
             }
         }
 
@@ -89,17 +92,25 @@ namespace LostarkLogProject.ControllFunction
                     else if (token == 1)
                     {
                         //트라이포드
-                        percentage = TripodPercentageCheck(display) ;
-                        success = TripodSuccessCheck(display);
-                        Console.WriteLine($"{percentage}, {success}");
-                        if(percentage > 0)
-                            previousTripodPercentage = percentage ;
-                        if (success != 0)
+                        int percentageIndex = TripodPercentageCheck(display);
+                        bool additionalMeterial = false;
+                        if (percentageIndex != 7)
+                        {
+                            percentage = tripodPercentageList[percentageIndex];
+                            additionalMeterial = percentageIndex % 2 == 1 ? true : false;
+                        }
+                        if (previousTripodPercentage > 0)
+                            success = TripodSuccessCheck(display);
+
+                        if (percentage > 0)
+                            previousTripodPercentage = percentage;
+                        if (success > 0)
                             previousTripodSuccess = success;
 
-                        if(previousTripodSuccess != 0 && previousTripodPercentage != 0)
+                        if (previousTripodSuccess != 0 && previousTripodPercentage != 0)
                         {
-                            Console.WriteLine($"{previousTripodPercentage} : {previousTripodSuccess}");
+                            var successValue = previousTripodSuccess == 1 ? true : false;
+                            PushTripodData(successValue, previousTripodPercentage, additionalMeterial);
                             previousTripodPercentage = 0;
                             previousTripodSuccess = 0;
                         }
@@ -288,6 +299,7 @@ namespace LostarkLogProject.ControllFunction
         private int[][] previousEngravingSuccessData = new int[3][];
         private void ComparisonData(int percentage, string[] engravingName, int[][] engravingSuccessData)
         {
+
             // 첫입력
             if (previousEngravingName[0] == "")
             {
@@ -363,27 +375,27 @@ namespace LostarkLogProject.ControllFunction
                 //값이 범위 내로 증가하면 강화를 했다는거니까 저장하고 갱신하면됨
                 if (distance1[0] == 1)
                 {
-                    PushData(previousPercentage, previousEngravingName[0], false, true, distance1[1]);
+                    PushAbilityStoneData(previousPercentage, previousEngravingName[0], false, true, distance1[1]);
                 }
                 else if (distance1[0] == 2)
                 {
-                    PushData(previousPercentage, previousEngravingName[0], true, true, distance1[1]);
+                    PushAbilityStoneData(previousPercentage, previousEngravingName[0], true, true, distance1[1]);
                 }
                 else if (distance2[0] == 1)
                 {
-                    PushData(previousPercentage, previousEngravingName[1], false, true, distance2[1]);
+                    PushAbilityStoneData(previousPercentage, previousEngravingName[1], false, true, distance2[1]);
                 }
                 else if (distance2[0] == 2)
                 {
-                    PushData(previousPercentage, previousEngravingName[1], true, true, distance2[1]);
+                    PushAbilityStoneData(previousPercentage, previousEngravingName[1], true, true, distance2[1]);
                 }
                 else if (distance3[0] == 1)
                 {
-                    PushData(previousPercentage, previousEngravingName[2], false, false, distance3[1]);
+                    PushAbilityStoneData(previousPercentage, previousEngravingName[2], false, false, distance3[1]);
                 }
                 else if (distance3[0] == 2)
                 {
-                    PushData(previousPercentage, previousEngravingName[2], true, false, distance3[1]);
+                    PushAbilityStoneData(previousPercentage, previousEngravingName[2], true, false, distance3[1]);
                 }
 
                 previousPercentage = percentage;
@@ -429,15 +441,13 @@ namespace LostarkLogProject.ControllFunction
             return long.Parse(str);
         }
 
-        Queue<AbilityItem> queue = new Queue<AbilityItem>();
-        private void PushData(int percentage, string engravingName, bool success, bool adjustment, int digit)
+        Queue<AbilityItem> abilityItemQueue = new Queue<AbilityItem>();
+        private void PushAbilityStoneData(int percentage, string engravingName, bool success, bool adjustment, int digit)
         {
             //큐에 데이터 올리고 다른 스레드로 저장 작업 처리
             AbilityItem data = new AbilityItem(percentage, engravingName, success, adjustment, digit, firestoreDb);
-            queue.Enqueue(data);
+            abilityItemQueue.Enqueue(data);
         }
-
-
         #endregion
 
         #region 트라이포드 이미지 처리 함수
@@ -451,9 +461,9 @@ namespace LostarkLogProject.ControllFunction
             OpenCvSharp.Point minloc, maxloc;
             double minval, maxval;
 
-            double[] val = new double[6];
+            double[] val = new double[7];
             // 퍼센트 확인
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Cv2.MatchTemplate(percentageArea, resourceLoader.GetTripodPercentageImage(i), percentageSerchResult, TemplateMatchModes.CCoeffNormed);
                 Cv2.MinMaxLoc(percentageSerchResult, out minval, out maxval, out minloc, out maxloc);
@@ -464,14 +474,14 @@ namespace LostarkLogProject.ControllFunction
 
             if (maxVal < 0.5)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                return tripodPercentageList[maxIndex];
+                // 5 [10] 15 [30] 30 [60] 100
+                return maxIndex;
             }
         }
-
 
         private int TripodSuccessCheck(Mat display)
         {
@@ -499,6 +509,57 @@ namespace LostarkLogProject.ControllFunction
             return 0;
 
         }
+
+        Queue<TripodItem> tripodItemQueue = new Queue<TripodItem>();
+        private void PushTripodData(bool previousTripodSuccess, int previousTripodPercentage, bool additionalMeterial)
+        {
+            TripodItem item = new TripodItem(previousTripodSuccess, previousTripodPercentage, additionalMeterial, firestoreDb);
+            tripodItemQueue.Enqueue(item);
+        }
         #endregion
+
+        private void SaveData()
+        {
+            //데이터 저장할 때 서버로 데이터 전송
+            while (threadState)
+            {
+                if (!mainForm.TestModeCheck())
+                {
+                    if (abilityItemQueue.Count > 0)
+                    {
+                        var item = abilityItemQueue.Dequeue();
+
+                        item.SendData();
+                        item.SaveData();
+                        mainForm.AddItemToListBox(item.GetEngravingName(), item.GetPercentage(), item.GetSuccess());
+                    }
+
+                    if (tripodItemQueue.Count > 0)
+                    {
+                        var item = tripodItemQueue.Dequeue();
+                        item.SendData();
+                        item.SaveData();
+                    }
+                }
+                else
+                {
+                    if (abilityItemQueue.Count > 0)
+                    {
+                        var item = abilityItemQueue.Dequeue();
+
+                        item.SaveData();
+                        mainForm.AddItemToListBox(item.GetEngravingName(), item.GetPercentage(), item.GetSuccess());
+                    }
+
+                    if (tripodItemQueue.Count > 0)
+                    {
+                        var item = tripodItemQueue.Dequeue();
+                        item.SaveData();
+                    }
+                }
+
+                Thread.Sleep(10);
+            }
+        }
     }
 }

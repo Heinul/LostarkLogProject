@@ -34,14 +34,16 @@
             this.SideMenu = new System.Windows.Forms.Panel();
             this.Option = new System.Windows.Forms.Button();
             this.Exit = new System.Windows.Forms.Button();
-            this.Tendency = new System.Windows.Forms.Button();
-            this.LogDetail = new System.Windows.Forms.Button();
+            this.TripodDashBorad = new System.Windows.Forms.Button();
+            this.AbilityStoneDashBoard = new System.Windows.Forms.Button();
             this.Home = new System.Windows.Forms.Button();
             this.LogoImage = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage0 = new System.Windows.Forms.TabPage();
+            this.LLStateImage = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.AbilityStonePage2Button = new System.Windows.Forms.Button();
             this.ImageAnalysisState1 = new System.Windows.Forms.Label();
             this.AddedItem7 = new System.Windows.Forms.Panel();
             this.SuccessText7 = new System.Windows.Forms.Label();
@@ -101,6 +103,9 @@
             this.StartDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.UID_Label = new System.Windows.Forms.Label();
+            this.Option_Label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TrayStartCheckBox = new System.Windows.Forms.CheckBox();
             this.PowerGroupBox = new System.Windows.Forms.GroupBox();
@@ -115,11 +120,11 @@
             this.TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LLStateImage = new System.Windows.Forms.PictureBox();
             this.SideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage0.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LLStateImage)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.AddedItem7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemImage7)).BeginInit();
@@ -152,13 +157,12 @@
             this.tabPage4.SuspendLayout();
             this.PowerGroupBox.SuspendLayout();
             this.TrayMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LLStateImage)).BeginInit();
             this.SuspendLayout();
             // 
             // MousePos
             // 
             this.MousePos.AutoSize = true;
-            this.MousePos.Location = new System.Drawing.Point(546, 15);
+            this.MousePos.Location = new System.Drawing.Point(295, 15);
             this.MousePos.Name = "MousePos";
             this.MousePos.Size = new System.Drawing.Size(71, 15);
             this.MousePos.TabIndex = 4;
@@ -170,8 +174,8 @@
             this.SideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.SideMenu.Controls.Add(this.Option);
             this.SideMenu.Controls.Add(this.Exit);
-            this.SideMenu.Controls.Add(this.Tendency);
-            this.SideMenu.Controls.Add(this.LogDetail);
+            this.SideMenu.Controls.Add(this.TripodDashBorad);
+            this.SideMenu.Controls.Add(this.AbilityStoneDashBoard);
             this.SideMenu.Controls.Add(this.Home);
             this.SideMenu.Controls.Add(this.LogoImage);
             this.SideMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -215,41 +219,41 @@
             this.Exit.UseVisualStyleBackColor = false;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // Tendency
+            // TripodDashBorad
             // 
-            this.Tendency.BackColor = System.Drawing.Color.Transparent;
-            this.Tendency.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Tendency.FlatAppearance.BorderSize = 0;
-            this.Tendency.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.Tendency.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.Tendency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Tendency.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Tendency.ForeColor = System.Drawing.Color.White;
-            this.Tendency.Image = ((System.Drawing.Image)(resources.GetObject("Tendency.Image")));
-            this.Tendency.Location = new System.Drawing.Point(0, 160);
-            this.Tendency.Name = "Tendency";
-            this.Tendency.Size = new System.Drawing.Size(55, 55);
-            this.Tendency.TabIndex = 2;
-            this.Tendency.UseVisualStyleBackColor = false;
-            this.Tendency.Click += new System.EventHandler(this.Tendency_Click);
+            this.TripodDashBorad.BackColor = System.Drawing.Color.Transparent;
+            this.TripodDashBorad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TripodDashBorad.FlatAppearance.BorderSize = 0;
+            this.TripodDashBorad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.TripodDashBorad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.TripodDashBorad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TripodDashBorad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TripodDashBorad.ForeColor = System.Drawing.Color.White;
+            this.TripodDashBorad.Image = ((System.Drawing.Image)(resources.GetObject("TripodDashBorad.Image")));
+            this.TripodDashBorad.Location = new System.Drawing.Point(0, 160);
+            this.TripodDashBorad.Name = "TripodDashBorad";
+            this.TripodDashBorad.Size = new System.Drawing.Size(55, 55);
+            this.TripodDashBorad.TabIndex = 2;
+            this.TripodDashBorad.UseVisualStyleBackColor = false;
+            this.TripodDashBorad.Click += new System.EventHandler(this.TripodDashBorad_Click);
             // 
-            // LogDetail
+            // AbilityStoneDashBoard
             // 
-            this.LogDetail.BackColor = System.Drawing.Color.Transparent;
-            this.LogDetail.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LogDetail.FlatAppearance.BorderSize = 0;
-            this.LogDetail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.LogDetail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.LogDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LogDetail.ForeColor = System.Drawing.Color.White;
-            this.LogDetail.Image = ((System.Drawing.Image)(resources.GetObject("LogDetail.Image")));
-            this.LogDetail.Location = new System.Drawing.Point(0, 105);
-            this.LogDetail.Name = "LogDetail";
-            this.LogDetail.Size = new System.Drawing.Size(55, 55);
-            this.LogDetail.TabIndex = 1;
-            this.LogDetail.UseVisualStyleBackColor = false;
-            this.LogDetail.Click += new System.EventHandler(this.LogDetail_Click);
+            this.AbilityStoneDashBoard.BackColor = System.Drawing.Color.Transparent;
+            this.AbilityStoneDashBoard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AbilityStoneDashBoard.FlatAppearance.BorderSize = 0;
+            this.AbilityStoneDashBoard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.AbilityStoneDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.AbilityStoneDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AbilityStoneDashBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AbilityStoneDashBoard.ForeColor = System.Drawing.Color.White;
+            this.AbilityStoneDashBoard.Image = ((System.Drawing.Image)(resources.GetObject("AbilityStoneDashBoard.Image")));
+            this.AbilityStoneDashBoard.Location = new System.Drawing.Point(0, 105);
+            this.AbilityStoneDashBoard.Name = "AbilityStoneDashBoard";
+            this.AbilityStoneDashBoard.Size = new System.Drawing.Size(55, 55);
+            this.AbilityStoneDashBoard.TabIndex = 1;
+            this.AbilityStoneDashBoard.UseVisualStyleBackColor = false;
+            this.AbilityStoneDashBoard.Click += new System.EventHandler(this.AbilityStoneDashBoard_Click);
             // 
             // Home
             // 
@@ -284,7 +288,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(691, 15);
+            this.label1.Location = new System.Drawing.Point(207, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 15);
             this.label1.TabIndex = 2;
@@ -318,10 +322,21 @@
             this.tabPage0.TabIndex = 4;
             this.tabPage0.Text = "tabPage5";
             // 
+            // LLStateImage
+            // 
+            this.LLStateImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LLStateImage.Image = global::LostarkLogProject.Properties.Resources.로스트아크_실행_대기중;
+            this.LLStateImage.Location = new System.Drawing.Point(0, 0);
+            this.LLStateImage.Name = "LLStateImage";
+            this.LLStateImage.Size = new System.Drawing.Size(762, 531);
+            this.LLStateImage.TabIndex = 0;
+            this.LLStateImage.TabStop = false;
+            // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage1.BackgroundImage")));
+            this.tabPage1.Controls.Add(this.AbilityStonePage2Button);
             this.tabPage1.Controls.Add(this.ImageAnalysisState1);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.AddedItem7);
@@ -355,6 +370,20 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             // 
+            // AbilityStonePage2Button
+            // 
+            this.AbilityStonePage2Button.BackColor = System.Drawing.Color.Transparent;
+            this.AbilityStonePage2Button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AbilityStonePage2Button.BackgroundImage")));
+            this.AbilityStonePage2Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AbilityStonePage2Button.FlatAppearance.BorderSize = 0;
+            this.AbilityStonePage2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AbilityStonePage2Button.Location = new System.Drawing.Point(717, 5);
+            this.AbilityStonePage2Button.Name = "AbilityStonePage2Button";
+            this.AbilityStonePage2Button.Size = new System.Drawing.Size(38, 40);
+            this.AbilityStonePage2Button.TabIndex = 9;
+            this.AbilityStonePage2Button.UseVisualStyleBackColor = false;
+            this.AbilityStonePage2Button.Click += new System.EventHandler(this.AbilityStonePage2_Click);
+            // 
             // ImageAnalysisState1
             // 
             this.ImageAnalysisState1.AutoSize = true;
@@ -364,6 +393,7 @@
             this.ImageAnalysisState1.Size = new System.Drawing.Size(127, 17);
             this.ImageAnalysisState1.TabIndex = 8;
             this.ImageAnalysisState1.Text = "로스트아크 실행 대기중";
+            this.ImageAnalysisState1.Visible = false;
             // 
             // AddedItem7
             // 
@@ -791,6 +821,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage2.BackgroundImage")));
             this.tabPage2.Controls.Add(this.ImageAnalysisState2);
             this.tabPage2.Controls.Add(this.Detail25);
             this.tabPage2.Controls.Add(this.Detail35);
@@ -819,6 +850,7 @@
             this.ImageAnalysisState2.Size = new System.Drawing.Size(127, 17);
             this.ImageAnalysisState2.TabIndex = 9;
             this.ImageAnalysisState2.Text = "로스트아크 실행 대기중";
+            this.ImageAnalysisState2.Visible = false;
             // 
             // Detail25
             // 
@@ -930,16 +962,19 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.BackColor = System.Drawing.Color.White;
             this.tabPage3.Location = new System.Drawing.Point(4, 5);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(762, 531);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             // 
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.White;
+            this.tabPage4.Controls.Add(this.label3);
+            this.tabPage4.Controls.Add(this.UID_Label);
+            this.tabPage4.Controls.Add(this.Option_Label4);
             this.tabPage4.Controls.Add(this.label2);
             this.tabPage4.Controls.Add(this.TrayStartCheckBox);
             this.tabPage4.Controls.Add(this.PowerGroupBox);
@@ -952,6 +987,39 @@
             this.tabPage4.Size = new System.Drawing.Size(762, 531);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 9.749998F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
+            this.label3.Location = new System.Drawing.Point(81, 404);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(162, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "클릭시 클립보드에 복사됩니다.";
+            // 
+            // UID_Label
+            // 
+            this.UID_Label.AutoSize = true;
+            this.UID_Label.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UID_Label.ForeColor = System.Drawing.Color.Black;
+            this.UID_Label.Location = new System.Drawing.Point(81, 380);
+            this.UID_Label.Name = "UID_Label";
+            this.UID_Label.Size = new System.Drawing.Size(76, 21);
+            this.UID_Label.TabIndex = 11;
+            this.UID_Label.Text = "UID Text";
+            this.UID_Label.Click += new System.EventHandler(this.UID_Label_Click);
+            // 
+            // Option_Label4
+            // 
+            this.Option_Label4.AutoSize = true;
+            this.Option_Label4.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Option_Label4.Location = new System.Drawing.Point(58, 342);
+            this.Option_Label4.Name = "Option_Label4";
+            this.Option_Label4.Size = new System.Drawing.Size(50, 27);
+            this.Option_Label4.TabIndex = 10;
+            this.Option_Label4.Text = "UID";
             // 
             // label2
             // 
@@ -1078,16 +1146,6 @@
             this.exitToolStripMenuItem.Text = "종료";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // LLStateImage
-            // 
-            this.LLStateImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LLStateImage.Image = global::LostarkLogProject.Properties.Resources.로스트아크_실행_대기중;
-            this.LLStateImage.Location = new System.Drawing.Point(0, 0);
-            this.LLStateImage.Name = "LLStateImage";
-            this.LLStateImage.Size = new System.Drawing.Size(762, 531);
-            this.LLStateImage.TabIndex = 0;
-            this.LLStateImage.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1097,12 +1155,14 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.SideMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.SideMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage0.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LLStateImage)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.AddedItem7.ResumeLayout(false);
@@ -1146,7 +1206,6 @@
             this.PowerGroupBox.ResumeLayout(false);
             this.PowerGroupBox.PerformLayout();
             this.TrayMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.LLStateImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1154,7 +1213,7 @@
         #endregion
         private Label MousePos;
         private Panel SideMenu;
-        private Button LogDetail;
+        private Button AbilityStoneDashBoard;
         private Button Option;
         private TabControl tabControl1;
         private TabPage tabPage1;
@@ -1178,7 +1237,7 @@
         private Label FailLabel;
         private Label SuccessLabel;
         private Label TryLabel;
-        private Button Tendency;
+        private Button TripodDashBorad;
         private ToolTip DashboardGraphToolTip;
         private Label label1;
         private NotifyIcon TrayIcon;
@@ -1238,5 +1297,9 @@
         private Label label2;
         private CheckBox TrayStartCheckBox;
         private PictureBox LLStateImage;
+        private Label UID_Label;
+        private Label Option_Label4;
+        private Label label3;
+        private Button AbilityStonePage2Button;
     }
 }

@@ -10,21 +10,19 @@ namespace LostarkLogProject.ControllFuncion
     internal class DisplayCapture
     {
         ResourceLoader resourceLoader;
-        AbilityStoneImageAnalysis abilityStoneImageAnalysis;
-        TripodImageAnalysis tripodImageAnalysis;
         ImageAnalysis imageAnalysis;
+        MainForm mainForm;
 
         public DisplayCapture()
         {
 
         }
-        public DisplayCapture(/*MainForm mainform,*/ ResourceLoader resourceLoader/*, FirestoreDb firestoreDb*/)
+
+        public DisplayCapture(MainForm mainform, ResourceLoader resourceLoader, FirestoreDb firestoreDb)
         {
+            this.mainForm = mainform;
             this.resourceLoader = resourceLoader;
-            imageAnalysis = new ImageAnalysis(resourceLoader, null);
-            
-            //abilityStoneImageAnalysis = new AbilityStoneImageAnalysis(mainform, resourceLoader, firestoreDb);
-            //tripodImageAnalysis = new TripodImageAnalysis(mainform, resourceLoader);
+            imageAnalysis = new ImageAnalysis(mainform, resourceLoader, firestoreDb);
         }
 
         public Mat GetMatCapture()
@@ -89,8 +87,7 @@ namespace LostarkLogProject.ControllFuncion
                 if (maxval > 0.8)
                 {
                     imageAnalysis.EnqueueDisplayMat(0, display);
-                    //mainForm.SetImageAnalysisStateText("어빌리티스톤 세공 기록중");
-                    //mainForm.SetStateImage(2);
+                    mainForm.SetStateImage(2);
                     continue;
                 }
                 resultAbility.Dispose();
@@ -102,8 +99,7 @@ namespace LostarkLogProject.ControllFuncion
                 if (maxval > 0.8)
                 {
                     imageAnalysis.EnqueueDisplayMat(1, display);
-                    //mainForm.SetImageAnalysisStateText("트라이포드 부여 기록중");
-                    //mainForm.SetStateImage(3);
+                    mainForm.SetStateImage(3);
                     continue;
                 }
                 resultTripod.Dispose();

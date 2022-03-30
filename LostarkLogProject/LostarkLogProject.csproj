@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="asl-project-80aca-7ea4b7df82f1.json" />
+    <None Remove="lostarklogproject-18d6693e2647.json" />
     <None Remove="OpenCvSharpExtern.dll" />
     <None Remove="Resources\25p.png" />
     <None Remove="Resources\35p.png" />
@@ -80,7 +80,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="asl-project-80aca-7ea4b7df82f1.json">
+    <EmbeddedResource Include="lostarklogproject-18d6693e2647.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\25p.png" />

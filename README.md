@@ -7,7 +7,7 @@
 
 # 사용법
 > ## 설치
-> - Realse 페이지에서 msi 파일을 다운받을 수 있습니다.
+> - [Realse 페이지](https://github.com/Heinul/LostarkLogProject/releases)에서 msi 파일을 다운받을 수 있습니다.
 > - 프로그램 설치 후 실행하시면 자동으로 데이터를 수집합니다.
 
 # 제약사항

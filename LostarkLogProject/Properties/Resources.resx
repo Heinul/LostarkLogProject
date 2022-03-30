@@ -124,11 +124,38 @@
   <data name="SuccessText" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\successtext.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tripod_100_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_100%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tripod_15_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_15%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tripod_30_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_30%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tripod_5_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_5%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tripod_fail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_fail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tripod_success" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_success.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tripod_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_Text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tripod_up10_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_up10%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tripod_up30_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_up30%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tripod_up60_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tripod_up60%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_25p" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\25p.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_3440_1440_AbilityImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3440_1440_AbilityImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_35p" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\35p.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,6 +211,9 @@
   <data name="돌격대장" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\돌격대장.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="로스트아크_실행_대기중" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\로스트아크 실행 대기중.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="마나의흐름" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\마나의흐름.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -235,6 +265,9 @@
   <data name="약자무시" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\약자무시.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="어빌리티스톤_세공_기록중" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\어빌리티스톤 세공 기록중.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="에테르포식자" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\에테르포식자.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -282,6 +315,9 @@
   </data>
   <data name="탈출의명수" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\탈출의명수.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="트라이포드_부여_기록중" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\트라이포드 부여 기록중.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="폭팔물전문가" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\폭팔물전문가.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

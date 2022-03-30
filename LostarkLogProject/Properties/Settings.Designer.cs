@@ -58,5 +58,17 @@ namespace LostarkLogProject.Properties {
                 this["트레이로실행"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UID {
+            get {
+                return ((string)(this["UID"]));
+            }
+            set {
+                this["UID"] = value;
+            }
+        }
     }
 }

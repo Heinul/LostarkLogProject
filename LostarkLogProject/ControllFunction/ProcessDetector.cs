@@ -9,13 +9,13 @@ namespace LostarkLogProject.ControllFuncion
 {
     internal class ProcessDetector
     {
-        Thread thread;
         bool lostarkState = false;
         MainForm mainForm;
-        public ProcessDetector(MainForm mainForm)
+        DisplayCapture displayCapture;
+        public ProcessDetector(MainForm mainForm, ResourceLoader resourceLoader)
         {
             this.mainForm = mainForm;
-            thread = new Thread(ProcessDetection);
+            displayCapture = new DisplayCapture(resourceLoader);
         }
 
         private void ProcessDetection()
@@ -28,18 +28,23 @@ namespace LostarkLogProject.ControllFuncion
                     if (lostarkState == false)
                     {
                         lostarkState = true;
-                        mainForm.SetImageAnalysisStateText("이미지탐지 대기중");
-                        mainForm.StartImageAnalysis();
-                    }
+                        //mainForm.SetStateImage(1);
+                        //mainForm.SetImageAnalysisStateText("강화작업 대기중");
+                        //mainForm.StartImageAnalysis();
 
+                        displayCapture.StartDisplayCapture();
+                    }
                 }
                 else
                 {
                     if (lostarkState == true)
                     {
                         lostarkState = false;
-                        mainForm.SetImageAnalysisStateText("로스트아크 실행 대기중");
-                        mainForm.StopImageAnalysis();
+                        //mainForm.SetStateImage(0);
+                        //mainForm.SetImageAnalysisStateText("로스트아크 실행 대기중");
+                        //mainForm.StopImageAnalysis();
+
+                        displayCapture.StopDisplayCapture();
                     }
                 }
                 GC.Collect();
@@ -52,6 +57,11 @@ namespace LostarkLogProject.ControllFuncion
         {
             Thread thread = new Thread(ProcessDetection);
             thread.Start();
+        }
+
+        public void TestRun()
+        {
+            displayCapture.StartDisplayCapture();
         }
     }
 }

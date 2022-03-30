@@ -54,24 +54,37 @@ namespace LostarkLogProject
         };
         private string[] reductionList = { "공격력감소", "공격속도감소", "방어력감소", "이동속도감소" };
 
-        private Mat[] perImage = new Mat[6];
+        //어빌리티스톤
+        private Mat[] abilityPercentageImage = new Mat[6];
         private Mat[] enhance = new Mat[43];
         private Mat[] reduction = new Mat[4];
         private Mat abilityStoneTextImage = new Mat();
         private Mat SuccessTextImage = new Mat();
 
+        //트라이포드
+        private Mat[] tripodPercentageImage = new Mat[7];
+        private Mat tripodTextImage = new Mat();
+        private Mat tripodSuccessImage = new Mat();
+        private Mat tripodFailImage = new Mat();
+
         public ResourceLoader()
         {
+
+
+            #region 어빌리티스톤 확률
             abilityStoneTextImage = Resources.Ability_Stone_Text.ToMat();
             SuccessTextImage = Resources.SuccessText.ToMat();
 
-            perImage[0] = Resources._75p.ToMat();
-            perImage[1] = Resources._65p.ToMat();
-            perImage[2] = Resources._55p.ToMat();
-            perImage[3] = Resources._45p.ToMat();
-            perImage[4] = Resources._35p.ToMat();
-            perImage[5] = Resources._25p.ToMat();
+            
+            abilityPercentageImage[0] = Resources._75p.ToMat();
+            abilityPercentageImage[1] = Resources._65p.ToMat();
+            abilityPercentageImage[2] = Resources._55p.ToMat();
+            abilityPercentageImage[3] = Resources._45p.ToMat();
+            abilityPercentageImage[4] = Resources._35p.ToMat();
+            abilityPercentageImage[5] = Resources._25p.ToMat();
+            #endregion
 
+            #region 각인 이미지
             enhance[0] = Resources.각성.ToMat();
             enhance[1] = Resources.강령술.ToMat();
             enhance[2] = Resources.강화방패.ToMat();
@@ -120,6 +133,36 @@ namespace LostarkLogProject
             reduction[1] = Resources.공격속도감소.ToMat();
             reduction[2] = Resources.방어력감소.ToMat();
             reduction[3] = Resources.이동속도감소.ToMat();
+            #endregion
+
+            #region 트라이포드 확률이미지
+            tripodTextImage = Resources.Tripod_Text.ToMat();
+            tripodSuccessImage = Resources.Tripod_success.ToMat();
+            tripodFailImage = Resources.Tripod_fail.ToMat();
+            
+            tripodPercentageImage[0] = Resources.Tripod_5_.ToMat();
+            tripodPercentageImage[1] = Resources.Tripod_up10_.ToMat();
+            tripodPercentageImage[2] = Resources.Tripod_15_.ToMat();
+            tripodPercentageImage[3] = Resources.Tripod_up30_.ToMat();
+            tripodPercentageImage[4] = Resources.Tripod_30_.ToMat();
+            tripodPercentageImage[5] = Resources.Tripod_up60_.ToMat();
+            tripodPercentageImage[6] = Resources.Tripod_100_.ToMat();
+            #endregion
+        }
+
+        public Mat GetTripodPercentageImage(int num)
+        {
+            return tripodPercentageImage[num];
+        }
+
+        public Mat GetTripodSuccessImage()
+        {
+            return tripodSuccessImage;
+        }
+
+        public Mat GetTripodFailImage()
+        {
+            return tripodFailImage;
         }
 
         public Mat GetImageToName(string name)
@@ -177,15 +220,21 @@ namespace LostarkLogProject
         {
             return SuccessTextImage;
         }
+
+        public Mat GetTripodTextImage()
+        {
+            return tripodTextImage;
+        }
+
         public Mat GetPercentageImage(int num)
         {
-            return perImage[num];
+            return abilityPercentageImage[num];
         }
 
         public Mat GetPercentageGrayImage(int num)
         {
             Mat gray = new Mat();
-            Cv2.CvtColor(perImage[num], gray, ColorConversionCodes.BGR2GRAY);
+            Cv2.CvtColor(abilityPercentageImage[num], gray, ColorConversionCodes.BGR2GRAY);
             return gray;
         }
 

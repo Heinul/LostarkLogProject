@@ -1,10 +1,32 @@
-﻿using OpenCvSharp;
+﻿using Google.Cloud.Firestore;
+using LostarkLogProject.AbilityStoneLog;
+using LostarkLogProject.ControllFunction;
+using LostarkLogProject.TripodLog;
+using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
 namespace LostarkLogProject.ControllFuncion
 {
     internal class DisplayCapture
     {
+        ResourceLoader resourceLoader;
+        AbilityStoneImageAnalysis abilityStoneImageAnalysis;
+        TripodImageAnalysis tripodImageAnalysis;
+        ImageAnalysis imageAnalysis;
+
+        public DisplayCapture()
+        {
+
+        }
+        public DisplayCapture(/*MainForm mainform,*/ ResourceLoader resourceLoader/*, FirestoreDb firestoreDb*/)
+        {
+            this.resourceLoader = resourceLoader;
+            imageAnalysis = new ImageAnalysis(resourceLoader, null);
+            
+            //abilityStoneImageAnalysis = new AbilityStoneImageAnalysis(mainform, resourceLoader, firestoreDb);
+            //tripodImageAnalysis = new TripodImageAnalysis(mainform, resourceLoader);
+        }
+
         public Mat GetMatCapture()
         {
             /* 
@@ -38,18 +60,56 @@ namespace LostarkLogProject.ControllFuncion
             return bmp;
         }
 
-        public void TestDisplayCapture(Bitmap display)
+        bool threadState = false;
+        public void StartDisplayCapture()
         {
-            int normalization = (display.Width - display.Height / 9 * 16) / 2;
-            Mat displayToMat = display.ToMat();
-            
-            displayToMat = displayToMat.SubMat(new Rect(normalization, 0, display.Height * 16 / 9, display.Height));
-            
-            Cv2.ImShow("1", displayToMat);
-            Cv2.WaitKey(0);
-            displayToMat = displayToMat.Resize(new OpenCvSharp.Size(1920, 1080));
-            Cv2.ImShow("1", displayToMat);
-            Cv2.WaitKey(0);
+            threadState = true;
+            new Thread(ClassificationWorkState).Start();
+            imageAnalysis.Run();
         }
+
+        public void StopDisplayCapture()
+        {
+            threadState = false;
+            imageAnalysis.Stop();
+        }
+
+        private void ClassificationWorkState()
+        {
+            while (threadState)
+            {
+                Mat display = GetMatCapture();
+
+                OpenCvSharp.Point minloc, maxloc;
+                double minval, maxval;
+
+                Mat resultAbility = new Mat();
+                Cv2.MatchTemplate(display, resourceLoader.GetSuccessTextImage(), resultAbility, TemplateMatchModes.CCoeffNormed);
+                Cv2.MinMaxLoc(resultAbility, out minval, out maxval, out minloc, out maxloc);
+                if (maxval > 0.8)
+                {
+                    imageAnalysis.EnqueueDisplayMat(0, display);
+                    //mainForm.SetImageAnalysisStateText("어빌리티스톤 세공 기록중");
+                    //mainForm.SetStateImage(2);
+                    continue;
+                }
+                resultAbility.Dispose();
+
+                
+                Mat resultTripod = new Mat();
+                Cv2.MatchTemplate(display, resourceLoader.GetTripodTextImage(), resultTripod, TemplateMatchModes.CCoeffNormed);
+                Cv2.MinMaxLoc(resultTripod, out minval, out maxval, out minloc, out maxloc);
+                if (maxval > 0.8)
+                {
+                    imageAnalysis.EnqueueDisplayMat(1, display);
+                    //mainForm.SetImageAnalysisStateText("트라이포드 부여 기록중");
+                    //mainForm.SetStateImage(3);
+                    continue;
+                }
+                resultTripod.Dispose();
+                Thread.Sleep(1);
+            }
+        }
+
     }
 }

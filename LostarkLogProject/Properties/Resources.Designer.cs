@@ -73,16 +73,6 @@ namespace LostarkLogProject.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap _3440_1440_AbilityImage {
-            get {
-                object obj = ResourceManager.GetObject("_3440_1440_AbilityImage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap _35p {
             get {
                 object obj = ResourceManager.GetObject("_35p", resourceCulture);
@@ -146,6 +136,106 @@ namespace LostarkLogProject.Properties {
         internal static System.Drawing.Bitmap SuccessText {
             get {
                 object obj = ResourceManager.GetObject("SuccessText", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_100_ {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_100_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_15_ {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_15_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_30_ {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_30_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_5_ {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_5_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_fail {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_fail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_success {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_success", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_Text {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_Text", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_up10_ {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_up10_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_up30_ {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_up30_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tripod_up60_ {
+            get {
+                object obj = ResourceManager.GetObject("Tripod_up60_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +366,16 @@ namespace LostarkLogProject.Properties {
         internal static System.Drawing.Bitmap 돌격대장 {
             get {
                 object obj = ResourceManager.GetObject("돌격대장", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 로스트아크_실행_대기중 {
+            get {
+                object obj = ResourceManager.GetObject("로스트아크_실행_대기중", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -453,6 +553,16 @@ namespace LostarkLogProject.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap 어빌리티스톤_세공_기록중 {
+            get {
+                object obj = ResourceManager.GetObject("어빌리티스톤_세공_기록중", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap 에테르포식자 {
             get {
                 object obj = ResourceManager.GetObject("에테르포식자", resourceCulture);
@@ -606,6 +716,16 @@ namespace LostarkLogProject.Properties {
         internal static System.Drawing.Bitmap 탈출의명수 {
             get {
                 object obj = ResourceManager.GetObject("탈출의명수", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 트라이포드_부여_기록중 {
+            get {
+                object obj = ResourceManager.GetObject("트라이포드_부여_기록중", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

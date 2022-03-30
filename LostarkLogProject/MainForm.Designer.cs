@@ -115,9 +115,11 @@
             this.TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LLStateImage = new System.Windows.Forms.PictureBox();
             this.SideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPage0.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.AddedItem7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemImage7)).BeginInit();
@@ -150,6 +152,7 @@
             this.tabPage4.SuspendLayout();
             this.PowerGroupBox.SuspendLayout();
             this.TrayMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LLStateImage)).BeginInit();
             this.SuspendLayout();
             // 
             // MousePos
@@ -307,16 +310,18 @@
             // 
             // tabPage0
             // 
+            this.tabPage0.BackColor = System.Drawing.Color.White;
+            this.tabPage0.Controls.Add(this.LLStateImage);
             this.tabPage0.Location = new System.Drawing.Point(4, 5);
             this.tabPage0.Name = "tabPage0";
             this.tabPage0.Size = new System.Drawing.Size(762, 531);
             this.tabPage0.TabIndex = 4;
             this.tabPage0.Text = "tabPage5";
-            this.tabPage0.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage1.BackgroundImage")));
             this.tabPage1.Controls.Add(this.ImageAnalysisState1);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.AddedItem7);
@@ -1073,6 +1078,16 @@
             this.exitToolStripMenuItem.Text = "종료";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
+            // LLStateImage
+            // 
+            this.LLStateImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LLStateImage.Image = global::LostarkLogProject.Properties.Resources.로스트아크_실행_대기중;
+            this.LLStateImage.Location = new System.Drawing.Point(0, 0);
+            this.LLStateImage.Name = "LLStateImage";
+            this.LLStateImage.Size = new System.Drawing.Size(762, 531);
+            this.LLStateImage.TabIndex = 0;
+            this.LLStateImage.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1087,6 +1102,7 @@
             this.SideMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage0.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.AddedItem7.ResumeLayout(false);
@@ -1130,6 +1146,7 @@
             this.PowerGroupBox.ResumeLayout(false);
             this.PowerGroupBox.PerformLayout();
             this.TrayMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LLStateImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1220,5 +1237,6 @@
         private Label Option_Label1;
         private Label label2;
         private CheckBox TrayStartCheckBox;
+        private PictureBox LLStateImage;
     }
 }

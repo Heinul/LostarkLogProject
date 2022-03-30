@@ -1,7 +1,6 @@
 using Google.Cloud.Firestore;
 using LostarkLogProject.AbilityStoneLog;
 using LostarkLogProject.ControllFuncion;
-using LostarkLogProject.Properties;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -10,11 +9,11 @@ namespace LostarkLogProject
 {
     public partial class MainForm : Form
     {
+        bool TestMode = true;
         public MainForm()
         {
             InitializeComponent();
         }
-
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect
@@ -28,19 +27,18 @@ namespace LostarkLogProject
         {
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
             Init();
-            StartLogger();
+            StartLoggerAsync();
         }
 
         DashBoardPage dashboard;
-        ImageAnalysis imageAnalysis;
+        AbilityStoneImageAnalysis imageAnalysis;
         ResourceLoader resourceLoader;
         DetailPage detailPage;
         FirestoreDb firestoreDb;
+        string UID = "";
 
         private void Init()
         {
-            //new DisplayCapture().TestDisplayCapture(Resources._3440_1440_AbilityImage);
-
             LoadOption();
             AutoTrayRun();
 
@@ -59,32 +57,31 @@ namespace LostarkLogProject
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             firestoreDb = FirestoreDb.Create("asl-project-80aca");
 
-            imageAnalysis = new ImageAnalysis(this, resourceLoader, firestoreDb);
+            imageAnalysis = new AbilityStoneImageAnalysis(this, resourceLoader, firestoreDb);
         }
 
-
-        private void StartLogger()
+        private async Task StartLoggerAsync()
         {
+            if (!TestModeCheck())
+            {
+                // 버전 확인
+                var version = firestoreDb.Collection("Version").Document("VersionCheck");
+                var snap = await version.GetSnapshotAsync();
 
-            // 자동시작
+                if (snap.Exists)
+                {
+                    var systemVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                    var firebaseVersion = snap.ToDictionary();
+                    var value = firebaseVersion["Latest"].ToString();
 
-            // 버전 확인
-            //var version = firestoreDb.Collection("Version").Document("VersionCheck");
-            //var snap = await version.GetSnapshotAsync();
-
-            //if (snap.Exists)
-            //{
-            //    var systemVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            //    var firebaseVersion = snap.ToDictionary();
-            //    var value = firebaseVersion["Latest"].ToString();
-
-            //    if (!value.Equals(systemVer.ToString()))
-            //    {
-            //        MessageBox.Show("업데이트가 있습니다. 최신버전을 이용해주세요!");
-            //        System.Diagnostics.Process.Start(new ProcessStartInfo("https://github.com/Heinul/AbilityStoneLogProject/releases") { UseShellExecute = true });
-            //        return;
-            //    }
-            //}
+                    if (!value.Equals(systemVer.ToString()))
+                    {
+                        MessageBox.Show("업데이트가 있습니다. 최신버전을 이용해주세요!");
+                        System.Diagnostics.Process.Start(new ProcessStartInfo("https://github.com/Heinul/AbilityStoneLogProject/releases") { UseShellExecute = true });
+                        return;
+                    }
+                }
+            }
 
             //해상도 확인
             if (Screen.PrimaryScreen.Bounds.Height != 1080 && Screen.PrimaryScreen.Bounds.Height != 1440 && Screen.PrimaryScreen.Bounds.Height != 2160 && Screen.PrimaryScreen.Bounds.Height != 2880)
@@ -96,13 +93,19 @@ namespace LostarkLogProject
             {
                 try
                 {
-                    imageAnalysis = new ImageAnalysis(this, resourceLoader, firestoreDb);
-                    ProcessDetector processDetector = new ProcessDetector(this);
-                    processDetector.Run();
+                    if (!TestModeCheck())
+                    {
+                        imageAnalysis = new AbilityStoneImageAnalysis(this, resourceLoader, firestoreDb);
+                        ProcessDetector processDetector = new ProcessDetector(this, resourceLoader);
+                        processDetector.Run();
+                    }
 
-                    //Test
-                    //imageAnalysis = new ImageAnalysis(this, resourceLoader, firestoreDb);
-                    //imageAnalysis.Run();
+                    if (TestModeCheck())
+                    {
+                        //프로세스 탐지 과정 건너뛰고 바로 이미지 서치 시작
+                        ProcessDetector processDetector = new ProcessDetector(this, resourceLoader);
+                        processDetector.TestRun();
+                    }
 
                 }
                 catch (Exception ex)
@@ -201,6 +204,8 @@ namespace LostarkLogProject
             {
                 this.WindowState = FormWindowState.Minimized;
                 this.ShowInTaskbar = false;
+                TrayIcon.Visible = true;
+                TrayIcon.ContextMenuStrip = TrayMenu;
             }
             else
             {
@@ -276,7 +281,7 @@ namespace LostarkLogProject
             Properties.Settings.Default.트레이로실행 = TrayStartCheckBox.Checked;
             Properties.Settings.Default.Save();
         }
-            private void LoadOption()
+        private void LoadOption()
         {
             if(Properties.Settings.Default.종료버튼옵션 == true)
             {
@@ -287,8 +292,47 @@ namespace LostarkLogProject
                 PowerOptionOff.Checked = true;
             }
 
+            //if(Settings.Default.UID == "")
+            //{
+            //    Settings.Default.UID = Guid.NewGuid().ToString();
+            //    Settings.Default.Save();
+            //}
+            //else
+            //{
+            //    UID = Settings.Default.UID;
+            //}
+
             WindowsAutoStartCheckBox.Checked = Properties.Settings.Default.윈도우자동시작;
             TrayStartCheckBox.Checked = Properties.Settings.Default.트레이로실행;
+        }
+
+        public void SetStateImage(int stateNum)
+        {
+            this.Invoke(new Action(delegate ()
+            {
+                switch (stateNum)
+                {
+                    case 0:
+                        // 로스트아크 실행 대기중
+                        LLStateImage.Image = Properties.Resources.로스트아크_실행_대기중;
+                        break;
+                    case 1:
+                        // 동작 대기중
+                        break;
+                    case 2:
+                        // 어빌리티스톤 세공 인식
+                        LLStateImage.Image = Properties.Resources.어빌리티스톤_세공_기록중;
+                        break;
+                    case 3:
+                        // 트라이포드 부여 인식
+                        LLStateImage.Image = Properties.Resources.트라이포드_부여_기록중;
+                        break;
+                    case 4:
+                        // 에러
+                        break;
+                }
+            }));
+            
         }
         #endregion
 
@@ -296,13 +340,13 @@ namespace LostarkLogProject
 
         private void AutoTrayRun()
         {
+            TrayIcon.Visible = true;
+            TrayIcon.ContextMenuStrip = TrayMenu;
             if (TrayStartCheckBox.Checked)
             {
                 this.WindowState = FormWindowState.Minimized;
                 this.ShowInTaskbar = false;
                 this.Visible = false;
-                TrayIcon.Visible = true;
-                TrayIcon.ContextMenuStrip = TrayMenu;
             }
         }
 
@@ -331,6 +375,8 @@ namespace LostarkLogProject
             this.WindowState |= FormWindowState.Minimized;
             this.ShowInTaskbar = false;
             this.Visible = false;
+            TrayIcon.Visible = true;
+            TrayIcon.ContextMenuStrip = TrayMenu;
         }
 
         private void TrayIconMouseDoubleClick(object sender, MouseEventArgs e)
@@ -342,6 +388,10 @@ namespace LostarkLogProject
 
         #endregion
 
+        public bool TestModeCheck()
+        {
+            return TestMode;
+        }
        
     }
 }

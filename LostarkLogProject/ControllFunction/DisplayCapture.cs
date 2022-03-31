@@ -74,10 +74,14 @@ namespace LostarkLogProject.ControllFuncion
 
         private void ClassificationWorkState()
         {
+            long time = 0;
             while (threadState)
             {
+                if(DateTime.Now.Second - time > 5)
+                {
+                    mainForm.SetStateImage(1);
+                }
                 Mat display = GetMatCapture();
-
                 OpenCvSharp.Point minloc, maxloc;
                 double minval, maxval;
 
@@ -88,6 +92,7 @@ namespace LostarkLogProject.ControllFuncion
                 {
                     imageAnalysis.EnqueueDisplayMat(0, display);
                     mainForm.SetStateImage(2);
+                    time = DateTime.Now.Second;
                     continue;
                 }
                 resultAbility.Dispose();
@@ -100,6 +105,7 @@ namespace LostarkLogProject.ControllFuncion
                 {
                     imageAnalysis.EnqueueDisplayMat(1, display);
                     mainForm.SetStateImage(3);
+                    time = DateTime.Now.Second;
                     continue;
                 }
                 resultTripod.Dispose();

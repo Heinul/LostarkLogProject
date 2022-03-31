@@ -43,6 +43,7 @@
             this.tabPage0 = new System.Windows.Forms.TabPage();
             this.LLStateImage = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.AbilityStoneDashboardText = new System.Windows.Forms.Label();
             this.AbilityStonePage2Button = new System.Windows.Forms.Button();
             this.ImageAnalysisState1 = new System.Windows.Forms.Label();
             this.AddedItem7 = new System.Windows.Forms.Panel();
@@ -102,6 +103,20 @@
             this.EndDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.StartDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.Tripod100CountLabel = new System.Windows.Forms.Label();
+            this.Tripod60upCountLabel = new System.Windows.Forms.Label();
+            this.Tripod30CountLabel = new System.Windows.Forms.Label();
+            this.Tripod10upCountLabel = new System.Windows.Forms.Label();
+            this.Tripod100PercentLabel = new System.Windows.Forms.Label();
+            this.Tripod15CountLabel = new System.Windows.Forms.Label();
+            this.Tripod60upPercentLabel = new System.Windows.Forms.Label();
+            this.Tripod30upCountLabel = new System.Windows.Forms.Label();
+            this.Tripod30PercentLabel = new System.Windows.Forms.Label();
+            this.Tripod5CountLabel = new System.Windows.Forms.Label();
+            this.Tripod10upPercentLabel = new System.Windows.Forms.Label();
+            this.Tripod15PercentLabel = new System.Windows.Forms.Label();
+            this.Tripod30upPercentLabel = new System.Windows.Forms.Label();
+            this.Tripod5PercentLabel = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.UID_Label = new System.Windows.Forms.Label();
@@ -154,6 +169,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.EnhanceGraph75)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DetailGraphPictureBox)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.PowerGroupBox.SuspendLayout();
             this.TrayMenu.SuspendLayout();
@@ -222,6 +238,8 @@
             // TripodDashBorad
             // 
             this.TripodDashBorad.BackColor = System.Drawing.Color.Transparent;
+            this.TripodDashBorad.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TripodDashBorad.BackgroundImage")));
+            this.TripodDashBorad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.TripodDashBorad.Dock = System.Windows.Forms.DockStyle.Top;
             this.TripodDashBorad.FlatAppearance.BorderSize = 0;
             this.TripodDashBorad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
@@ -229,10 +247,9 @@
             this.TripodDashBorad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TripodDashBorad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TripodDashBorad.ForeColor = System.Drawing.Color.White;
-            this.TripodDashBorad.Image = ((System.Drawing.Image)(resources.GetObject("TripodDashBorad.Image")));
-            this.TripodDashBorad.Location = new System.Drawing.Point(0, 160);
+            this.TripodDashBorad.Location = new System.Drawing.Point(0, 165);
             this.TripodDashBorad.Name = "TripodDashBorad";
-            this.TripodDashBorad.Size = new System.Drawing.Size(55, 55);
+            this.TripodDashBorad.Size = new System.Drawing.Size(55, 60);
             this.TripodDashBorad.TabIndex = 2;
             this.TripodDashBorad.UseVisualStyleBackColor = false;
             this.TripodDashBorad.Click += new System.EventHandler(this.TripodDashBorad_Click);
@@ -240,6 +257,8 @@
             // AbilityStoneDashBoard
             // 
             this.AbilityStoneDashBoard.BackColor = System.Drawing.Color.Transparent;
+            this.AbilityStoneDashBoard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AbilityStoneDashBoard.BackgroundImage")));
+            this.AbilityStoneDashBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.AbilityStoneDashBoard.Dock = System.Windows.Forms.DockStyle.Top;
             this.AbilityStoneDashBoard.FlatAppearance.BorderSize = 0;
             this.AbilityStoneDashBoard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
@@ -247,10 +266,9 @@
             this.AbilityStoneDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AbilityStoneDashBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AbilityStoneDashBoard.ForeColor = System.Drawing.Color.White;
-            this.AbilityStoneDashBoard.Image = ((System.Drawing.Image)(resources.GetObject("AbilityStoneDashBoard.Image")));
             this.AbilityStoneDashBoard.Location = new System.Drawing.Point(0, 105);
             this.AbilityStoneDashBoard.Name = "AbilityStoneDashBoard";
-            this.AbilityStoneDashBoard.Size = new System.Drawing.Size(55, 55);
+            this.AbilityStoneDashBoard.Size = new System.Drawing.Size(55, 60);
             this.AbilityStoneDashBoard.TabIndex = 1;
             this.AbilityStoneDashBoard.UseVisualStyleBackColor = false;
             this.AbilityStoneDashBoard.Click += new System.EventHandler(this.AbilityStoneDashBoard_Click);
@@ -336,6 +354,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage1.BackgroundImage")));
+            this.tabPage1.Controls.Add(this.AbilityStoneDashboardText);
             this.tabPage1.Controls.Add(this.AbilityStonePage2Button);
             this.tabPage1.Controls.Add(this.ImageAnalysisState1);
             this.tabPage1.Controls.Add(this.label1);
@@ -369,6 +388,17 @@
             this.tabPage1.Size = new System.Drawing.Size(762, 531);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            // 
+            // AbilityStoneDashboardText
+            // 
+            this.AbilityStoneDashboardText.AutoSize = true;
+            this.AbilityStoneDashboardText.BackColor = System.Drawing.Color.Transparent;
+            this.AbilityStoneDashboardText.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AbilityStoneDashboardText.Location = new System.Drawing.Point(11, 8);
+            this.AbilityStoneDashboardText.Name = "AbilityStoneDashboardText";
+            this.AbilityStoneDashboardText.Size = new System.Drawing.Size(151, 21);
+            this.AbilityStoneDashboardText.TabIndex = 10;
+            this.AbilityStoneDashboardText.Text = "어빌리티스톤 대시보드";
             // 
             // AbilityStonePage2Button
             // 
@@ -656,6 +686,7 @@
             // 
             // ReductionGraph25
             // 
+            this.ReductionGraph25.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph25.Image")));
             this.ReductionGraph25.Location = new System.Drawing.Point(465, 486);
             this.ReductionGraph25.Name = "ReductionGraph25";
             this.ReductionGraph25.Size = new System.Drawing.Size(26, 0);
@@ -666,6 +697,7 @@
             // 
             // EnhanceGraph25
             // 
+            this.EnhanceGraph25.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph25.Image")));
             this.EnhanceGraph25.Location = new System.Drawing.Point(433, 486);
             this.EnhanceGraph25.Name = "EnhanceGraph25";
             this.EnhanceGraph25.Size = new System.Drawing.Size(26, 0);
@@ -676,6 +708,7 @@
             // 
             // ReductionGraph35
             // 
+            this.ReductionGraph35.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph35.Image")));
             this.ReductionGraph35.Location = new System.Drawing.Point(388, 486);
             this.ReductionGraph35.Name = "ReductionGraph35";
             this.ReductionGraph35.Size = new System.Drawing.Size(26, 0);
@@ -686,6 +719,7 @@
             // 
             // EnhanceGraph35
             // 
+            this.EnhanceGraph35.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph35.Image")));
             this.EnhanceGraph35.Location = new System.Drawing.Point(356, 486);
             this.EnhanceGraph35.Name = "EnhanceGraph35";
             this.EnhanceGraph35.Size = new System.Drawing.Size(26, 0);
@@ -696,6 +730,7 @@
             // 
             // ReductionGraph45
             // 
+            this.ReductionGraph45.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph45.Image")));
             this.ReductionGraph45.Location = new System.Drawing.Point(316, 486);
             this.ReductionGraph45.Name = "ReductionGraph45";
             this.ReductionGraph45.Size = new System.Drawing.Size(26, 0);
@@ -706,6 +741,7 @@
             // 
             // EnhanceGraph45
             // 
+            this.EnhanceGraph45.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph45.Image")));
             this.EnhanceGraph45.Location = new System.Drawing.Point(284, 486);
             this.EnhanceGraph45.Name = "EnhanceGraph45";
             this.EnhanceGraph45.Size = new System.Drawing.Size(26, 0);
@@ -716,6 +752,7 @@
             // 
             // ReductionGraph55
             // 
+            this.ReductionGraph55.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph55.Image")));
             this.ReductionGraph55.Location = new System.Drawing.Point(239, 486);
             this.ReductionGraph55.Name = "ReductionGraph55";
             this.ReductionGraph55.Size = new System.Drawing.Size(26, 0);
@@ -726,6 +763,7 @@
             // 
             // EnhanceGraph55
             // 
+            this.EnhanceGraph55.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph55.Image")));
             this.EnhanceGraph55.Location = new System.Drawing.Point(207, 486);
             this.EnhanceGraph55.Name = "EnhanceGraph55";
             this.EnhanceGraph55.Size = new System.Drawing.Size(26, 0);
@@ -736,6 +774,7 @@
             // 
             // ReductionGraph65
             // 
+            this.ReductionGraph65.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph65.Image")));
             this.ReductionGraph65.Location = new System.Drawing.Point(164, 486);
             this.ReductionGraph65.Name = "ReductionGraph65";
             this.ReductionGraph65.Size = new System.Drawing.Size(26, 0);
@@ -746,6 +785,7 @@
             // 
             // EnhanceGraph65
             // 
+            this.EnhanceGraph65.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph65.Image")));
             this.EnhanceGraph65.Location = new System.Drawing.Point(132, 486);
             this.EnhanceGraph65.Name = "EnhanceGraph65";
             this.EnhanceGraph65.Size = new System.Drawing.Size(26, 0);
@@ -756,6 +796,7 @@
             // 
             // ReductionGraph75
             // 
+            this.ReductionGraph75.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph75.Image")));
             this.ReductionGraph75.Location = new System.Drawing.Point(91, 486);
             this.ReductionGraph75.Name = "ReductionGraph75";
             this.ReductionGraph75.Size = new System.Drawing.Size(26, 0);
@@ -767,6 +808,7 @@
             // EnhanceGraph75
             // 
             this.EnhanceGraph75.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EnhanceGraph75.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph75.Image")));
             this.EnhanceGraph75.Location = new System.Drawing.Point(58, 486);
             this.EnhanceGraph75.Name = "EnhanceGraph75";
             this.EnhanceGraph75.Size = new System.Drawing.Size(26, 0);
@@ -963,11 +1005,181 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage3.BackgroundImage")));
+            this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tabPage3.Controls.Add(this.Tripod100CountLabel);
+            this.tabPage3.Controls.Add(this.Tripod60upCountLabel);
+            this.tabPage3.Controls.Add(this.Tripod30CountLabel);
+            this.tabPage3.Controls.Add(this.Tripod10upCountLabel);
+            this.tabPage3.Controls.Add(this.Tripod100PercentLabel);
+            this.tabPage3.Controls.Add(this.Tripod15CountLabel);
+            this.tabPage3.Controls.Add(this.Tripod60upPercentLabel);
+            this.tabPage3.Controls.Add(this.Tripod30upCountLabel);
+            this.tabPage3.Controls.Add(this.Tripod30PercentLabel);
+            this.tabPage3.Controls.Add(this.Tripod5CountLabel);
+            this.tabPage3.Controls.Add(this.Tripod10upPercentLabel);
+            this.tabPage3.Controls.Add(this.Tripod15PercentLabel);
+            this.tabPage3.Controls.Add(this.Tripod30upPercentLabel);
+            this.tabPage3.Controls.Add(this.Tripod5PercentLabel);
             this.tabPage3.Location = new System.Drawing.Point(4, 5);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(762, 531);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            // 
+            // Tripod100CountLabel
+            // 
+            this.Tripod100CountLabel.BackColor = System.Drawing.Color.Transparent;
+            this.Tripod100CountLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod100CountLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Tripod100CountLabel.Location = new System.Drawing.Point(515, 382);
+            this.Tripod100CountLabel.Name = "Tripod100CountLabel";
+            this.Tripod100CountLabel.Size = new System.Drawing.Size(130, 30);
+            this.Tripod100CountLabel.TabIndex = 3;
+            this.Tripod100CountLabel.Text = "0번 중";
+            this.Tripod100CountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod60upCountLabel
+            // 
+            this.Tripod60upCountLabel.BackColor = System.Drawing.Color.Transparent;
+            this.Tripod60upCountLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod60upCountLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Tripod60upCountLabel.Location = new System.Drawing.Point(316, 382);
+            this.Tripod60upCountLabel.Name = "Tripod60upCountLabel";
+            this.Tripod60upCountLabel.Size = new System.Drawing.Size(130, 30);
+            this.Tripod60upCountLabel.TabIndex = 3;
+            this.Tripod60upCountLabel.Text = "0번 중";
+            this.Tripod60upCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod30CountLabel
+            // 
+            this.Tripod30CountLabel.BackColor = System.Drawing.Color.Transparent;
+            this.Tripod30CountLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod30CountLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Tripod30CountLabel.Location = new System.Drawing.Point(117, 382);
+            this.Tripod30CountLabel.Name = "Tripod30CountLabel";
+            this.Tripod30CountLabel.Size = new System.Drawing.Size(130, 30);
+            this.Tripod30CountLabel.TabIndex = 3;
+            this.Tripod30CountLabel.Text = "0번 중";
+            this.Tripod30CountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod10upCountLabel
+            // 
+            this.Tripod10upCountLabel.BackColor = System.Drawing.Color.Transparent;
+            this.Tripod10upCountLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod10upCountLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Tripod10upCountLabel.Location = new System.Drawing.Point(220, 212);
+            this.Tripod10upCountLabel.Name = "Tripod10upCountLabel";
+            this.Tripod10upCountLabel.Size = new System.Drawing.Size(130, 30);
+            this.Tripod10upCountLabel.TabIndex = 3;
+            this.Tripod10upCountLabel.Text = "0번 중";
+            this.Tripod10upCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod100PercentLabel
+            // 
+            this.Tripod100PercentLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod100PercentLabel.Location = new System.Drawing.Point(515, 317);
+            this.Tripod100PercentLabel.Name = "Tripod100PercentLabel";
+            this.Tripod100PercentLabel.Size = new System.Drawing.Size(130, 40);
+            this.Tripod100PercentLabel.TabIndex = 2;
+            this.Tripod100PercentLabel.Text = "0%";
+            this.Tripod100PercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod15CountLabel
+            // 
+            this.Tripod15CountLabel.BackColor = System.Drawing.Color.Transparent;
+            this.Tripod15CountLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod15CountLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Tripod15CountLabel.Location = new System.Drawing.Point(413, 212);
+            this.Tripod15CountLabel.Name = "Tripod15CountLabel";
+            this.Tripod15CountLabel.Size = new System.Drawing.Size(130, 30);
+            this.Tripod15CountLabel.TabIndex = 3;
+            this.Tripod15CountLabel.Text = "0번 중";
+            this.Tripod15CountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod60upPercentLabel
+            // 
+            this.Tripod60upPercentLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod60upPercentLabel.Location = new System.Drawing.Point(316, 317);
+            this.Tripod60upPercentLabel.Name = "Tripod60upPercentLabel";
+            this.Tripod60upPercentLabel.Size = new System.Drawing.Size(130, 40);
+            this.Tripod60upPercentLabel.TabIndex = 2;
+            this.Tripod60upPercentLabel.Text = "0%";
+            this.Tripod60upPercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod30upCountLabel
+            // 
+            this.Tripod30upCountLabel.BackColor = System.Drawing.Color.Transparent;
+            this.Tripod30upCountLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod30upCountLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Tripod30upCountLabel.Location = new System.Drawing.Point(603, 212);
+            this.Tripod30upCountLabel.Name = "Tripod30upCountLabel";
+            this.Tripod30upCountLabel.Size = new System.Drawing.Size(130, 30);
+            this.Tripod30upCountLabel.TabIndex = 3;
+            this.Tripod30upCountLabel.Text = "0번 중";
+            this.Tripod30upCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod30PercentLabel
+            // 
+            this.Tripod30PercentLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod30PercentLabel.Location = new System.Drawing.Point(117, 317);
+            this.Tripod30PercentLabel.Name = "Tripod30PercentLabel";
+            this.Tripod30PercentLabel.Size = new System.Drawing.Size(130, 40);
+            this.Tripod30PercentLabel.TabIndex = 2;
+            this.Tripod30PercentLabel.Text = "0%";
+            this.Tripod30PercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod5CountLabel
+            // 
+            this.Tripod5CountLabel.BackColor = System.Drawing.Color.Transparent;
+            this.Tripod5CountLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod5CountLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Tripod5CountLabel.Location = new System.Drawing.Point(29, 212);
+            this.Tripod5CountLabel.Name = "Tripod5CountLabel";
+            this.Tripod5CountLabel.Size = new System.Drawing.Size(130, 30);
+            this.Tripod5CountLabel.TabIndex = 3;
+            this.Tripod5CountLabel.Text = "0번 중";
+            this.Tripod5CountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod10upPercentLabel
+            // 
+            this.Tripod10upPercentLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod10upPercentLabel.Location = new System.Drawing.Point(220, 147);
+            this.Tripod10upPercentLabel.Name = "Tripod10upPercentLabel";
+            this.Tripod10upPercentLabel.Size = new System.Drawing.Size(130, 40);
+            this.Tripod10upPercentLabel.TabIndex = 2;
+            this.Tripod10upPercentLabel.Text = "0%";
+            this.Tripod10upPercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod15PercentLabel
+            // 
+            this.Tripod15PercentLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod15PercentLabel.Location = new System.Drawing.Point(413, 147);
+            this.Tripod15PercentLabel.Name = "Tripod15PercentLabel";
+            this.Tripod15PercentLabel.Size = new System.Drawing.Size(130, 40);
+            this.Tripod15PercentLabel.TabIndex = 2;
+            this.Tripod15PercentLabel.Text = "0%";
+            this.Tripod15PercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod30upPercentLabel
+            // 
+            this.Tripod30upPercentLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod30upPercentLabel.Location = new System.Drawing.Point(603, 147);
+            this.Tripod30upPercentLabel.Name = "Tripod30upPercentLabel";
+            this.Tripod30upPercentLabel.Size = new System.Drawing.Size(130, 40);
+            this.Tripod30upPercentLabel.TabIndex = 2;
+            this.Tripod30upPercentLabel.Text = "0%";
+            this.Tripod30upPercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Tripod5PercentLabel
+            // 
+            this.Tripod5PercentLabel.Font = new System.Drawing.Font("한컴 말랑말랑 Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tripod5PercentLabel.Location = new System.Drawing.Point(29, 147);
+            this.Tripod5PercentLabel.Name = "Tripod5PercentLabel";
+            this.Tripod5PercentLabel.Size = new System.Drawing.Size(130, 40);
+            this.Tripod5PercentLabel.TabIndex = 2;
+            this.Tripod5PercentLabel.Text = "0%";
+            this.Tripod5PercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabPage4
             // 
@@ -1157,6 +1369,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.SideMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).EndInit();
@@ -1201,6 +1414,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DetailGraphPictureBox)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.PowerGroupBox.ResumeLayout(false);
@@ -1301,5 +1515,20 @@
         private Label Option_Label4;
         private Label label3;
         private Button AbilityStonePage2Button;
+        private Label AbilityStoneDashboardText;
+        private Label Tripod100CountLabel;
+        private Label Tripod60upCountLabel;
+        private Label Tripod30CountLabel;
+        private Label Tripod10upCountLabel;
+        private Label Tripod100PercentLabel;
+        private Label Tripod15CountLabel;
+        private Label Tripod60upPercentLabel;
+        private Label Tripod30upCountLabel;
+        private Label Tripod30PercentLabel;
+        private Label Tripod5CountLabel;
+        private Label Tripod10upPercentLabel;
+        private Label Tripod15PercentLabel;
+        private Label Tripod30upPercentLabel;
+        private Label Tripod5PercentLabel;
     }
 }

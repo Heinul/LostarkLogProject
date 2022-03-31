@@ -2,6 +2,7 @@ using Google.Cloud.Firestore;
 using LostarkLogProject.AbilityStoneLog;
 using LostarkLogProject.ControllFuncion;
 using LostarkLogProject.Properties;
+using LostarkLogProject.TripodLog;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -34,6 +35,7 @@ namespace LostarkLogProject
         DashBoardPage dashboard;
         ResourceLoader resourceLoader;
         DetailPage detailPage;
+        TripodDashBoard tripodDashBoard;
         FirestoreDb firestoreDb;
 
         private void Init()
@@ -51,6 +53,11 @@ namespace LostarkLogProject
 
             Label[] successPercentage = { Detail25, Detail35, Detail45, Detail55, Detail65, Detail75 };
             detailPage = new DetailPage(this, StartDateTimePicker, EndDateTimePicker, successPercentage, DetailGraphPictureBox);
+
+            Label[] tripodSuccessPercentageLabel = { Tripod5PercentLabel, Tripod10upPercentLabel, Tripod15PercentLabel, Tripod30upPercentLabel, Tripod30PercentLabel , Tripod60upPercentLabel, Tripod100PercentLabel };
+            Label[] tripodCountLabel = { Tripod5CountLabel, Tripod10upCountLabel, Tripod15CountLabel, Tripod30upCountLabel, Tripod30CountLabel, Tripod60upCountLabel, Tripod100CountLabel };
+
+            tripodDashBoard = new TripodDashBoard(this, tripodSuccessPercentageLabel, tripodCountLabel);
 
             string path = AppDomain.CurrentDomain.BaseDirectory + @"lostarklogproject-18d6693e2647.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
@@ -154,6 +161,7 @@ namespace LostarkLogProject
                 dashboard.UpdateDashboard();
 
                 detailPage.SetPageState(false);
+                tripodDashBoard.SetPageState(false);
 
 
                 tabControl1.SelectedIndex = 1;
@@ -167,6 +175,7 @@ namespace LostarkLogProject
             detailPage.SetPageState(true);
             detailPage.UpdateDetailPage();
 
+            tripodDashBoard.SetPageState(false);
             dashboard.SetPageState(false);
 
             tabControl1.SelectedIndex = 2;
@@ -176,6 +185,9 @@ namespace LostarkLogProject
         {
             if (tabControl1.SelectedIndex != 3)
             {
+                tripodDashBoard.SetPageState(true);
+                tripodDashBoard.UpdateDetailPage();
+
                 dashboard.SetPageState(false);
                 detailPage.SetPageState(false);
 
@@ -407,7 +419,5 @@ namespace LostarkLogProject
         {
             return TestMode;
         }
-
-        
     }
 }

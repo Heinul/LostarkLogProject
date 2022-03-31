@@ -30,7 +30,7 @@ namespace LostarkLogProject.TripodLog
                     sql.AppendLine(@"CREATE TABLE ""TRIPODDATA"" (");
                     sql.AppendLine(@" ""PERCENTAGE"" INTAGER, ");
                     sql.AppendLine(@" ""SUCCESS"" BOOLEAN,");
-                    sql.AppendLine(@" ""ADDITIONALMETERIAL"" BOOLEAN,");
+                    sql.AppendLine(@" ""ADDITIONALMATERIAL"" BOOLEAN,");
                     sql.AppendLine(@" ""TIMESTAMP"" INTAGER NOT NULL");
                     sql.AppendLine(@" ); ");
 
@@ -47,13 +47,13 @@ namespace LostarkLogProject.TripodLog
             }
         }
        
-        public DataRowCollection Select(string percentage)
+        public DataRowCollection Select(int percentage)
         {
             try
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE PERCENTAGE = '{percentage}'";
+                string sql = $"SELECT * FROM TRIPODDATA WHERE PERCENTAGE = {percentage}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
                 Console.WriteLine(sql);
@@ -70,14 +70,36 @@ namespace LostarkLogProject.TripodLog
             }
         }
 
-        public DataRowCollection Select(string percentage, string success)
+        public DataRowCollection Select(int percentage, bool material)
         {
-            //1 : 성공 , 2 : 실패
             try
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE PERCENTAGE = '{percentage}' AND SUCCESS = '{success}'";
+                string sql = $"SELECT * FROM TRIPODDATA WHERE PERCENTAGE = {percentage} AND ADDITIONALMATERIAL = {material}";
+                adapter = new SQLiteDataAdapter(sql, DBpath);
+                adapter.Fill(ds);
+                Console.WriteLine(sql);
+
+                if (ds.Tables.Count > 0)
+                    return ds.Tables[0].Rows;
+                else
+                    return null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                throw;
+            }
+        }
+
+        public DataRowCollection Select(int percentage, bool material, bool success)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+
+                string sql = $"SELECT * FROM TRIPODDATA WHERE PERCENTAGE = {percentage} AND ADDITIONALMATERIAL = {material} AND SUCCESS = {success} ";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
                 Console.WriteLine(sql);
@@ -101,7 +123,7 @@ namespace LostarkLogProject.TripodLog
                 using (SQLiteConnection conn = new SQLiteConnection(DBpath))
                 {
                     conn.Open();
-                    string sql = $"INSERT INTO TRIPODDATA('PERCENTAGE', 'SUCCESS', 'ADDITIONALMETERIAL', 'TIMESTAMP') VALUES ({percentage}, {success}, {meterial}, {DateTime.Now.Ticks})";
+                    string sql = $"INSERT INTO TRIPODDATA('PERCENTAGE', 'SUCCESS', 'ADDITIONALMATERIAL', 'TIMESTAMP') VALUES ({percentage}, {success}, {meterial}, {DateTime.Now.Ticks})";
                     SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                     Console.WriteLine(cmd.CommandText);
                     cmd.ExecuteNonQuery();

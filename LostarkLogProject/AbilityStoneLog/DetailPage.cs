@@ -20,6 +20,7 @@ namespace LostarkLogProject.AbilityStoneLog
         {
             this.mainForm = mainForm;
 
+            startDateTimePicker.Value = DateTime.Now.Date;
             this.startDateTimePicker = startDateTimePicker;
             endDateTimePicker.Value = DateTime.Now;
             this.endDateTimePicker = endDateTimePicker;
@@ -43,10 +44,6 @@ namespace LostarkLogProject.AbilityStoneLog
                 AbilityStoneDBManager db = new AbilityStoneDBManager();
                 while (pageState)
                 {
-                    mainForm.Invoke(new Action(delegate ()
-                    {
-                        endDateTimePicker.Value = DateTime.Now;
-                    }));
                     try
                     {
                         int[] totalDot = new int[6];

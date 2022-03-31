@@ -56,6 +56,7 @@ namespace LostarkLogProject.ControllFunction
 
             int previousTripodPercentage = 0;
             int previousTripodSuccess = 0; // 0 인식오류, 1 성공, 2 실패
+            bool additionalMeterial = false;
 
             while (threadState)
             {
@@ -93,7 +94,7 @@ namespace LostarkLogProject.ControllFunction
                     {
                         //트라이포드
                         int percentageIndex = TripodPercentageCheck(display);
-                        bool additionalMeterial = false;
+                        
                         if (percentageIndex != 7)
                         {
                             percentage = tripodPercentageList[percentageIndex];
@@ -113,6 +114,7 @@ namespace LostarkLogProject.ControllFunction
                             PushTripodData(successValue, previousTripodPercentage, additionalMeterial);
                             previousTripodPercentage = 0;
                             previousTripodSuccess = 0;
+                            additionalMeterial = false;
                         }
                     }
                 }

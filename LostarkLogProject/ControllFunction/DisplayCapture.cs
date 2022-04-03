@@ -2,6 +2,7 @@
 using LostarkLogProject.AbilityStoneLog;
 using LostarkLogProject.ControllFunction;
 using LostarkLogProject.TripodLog;
+using Microsoft.Web.WebView2.WinForms;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
@@ -18,11 +19,11 @@ namespace LostarkLogProject.ControllFuncion
 
         }
 
-        public DisplayCapture(MainForm mainform, ResourceLoader resourceLoader, FirestoreDb firestoreDb)
+        public DisplayCapture(MainForm mainform, ResourceLoader resourceLoader, WebView2 webBrowser)
         {
             this.mainForm = mainform;
             this.resourceLoader = resourceLoader;
-            imageAnalysis = new ImageAnalysis(mainform, resourceLoader, firestoreDb);
+            imageAnalysis = new ImageAnalysis(mainform, resourceLoader, webBrowser);
         }
 
         public Mat GetMatCapture()

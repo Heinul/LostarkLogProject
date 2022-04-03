@@ -22,7 +22,7 @@ namespace LostarkLogProject.AbilityStoneLog
         {
             using (SQLiteConnection conn = new SQLiteConnection(DBpath))
             {
-                string tablecheckQuery = @"SELECT COUNT(*) FROM sqlite_master WHERE Name = 'ENGRAVINGDATA'";
+                string tablecheckQuery = @"SELECT COUNT(*) FROM sqlite_master WHERE Name = 'ABILITYSTONEDATA'";
                 conn.Open();
 
                 SQLiteCommand cmd1 = new SQLiteCommand(tablecheckQuery, conn);
@@ -30,7 +30,7 @@ namespace LostarkLogProject.AbilityStoneLog
                 if (resrult < 1)
                 {
                     StringBuilder sql = new StringBuilder();
-                    sql.AppendLine(@"CREATE TABLE ""ENGRAVINGDATA"" (");
+                    sql.AppendLine(@"CREATE TABLE ""ABILITYSTONEDATA"" (");
                     sql.AppendLine(@" ""PERCENTAGE"" INTAGER, ");
                     sql.AppendLine(@" ""ENGRAVINGNAME"" TEXT,");
                     sql.AppendLine(@" ""SUCCESS"" BOOLEAN,");
@@ -58,7 +58,7 @@ namespace LostarkLogProject.AbilityStoneLog
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA";
+                string sql = $"SELECT * FROM ABILITYSTONEDATA";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
 
@@ -80,7 +80,7 @@ namespace LostarkLogProject.AbilityStoneLog
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE ENGRAVINGNAME = '{engravingName}'";
+                string sql = $"SELECT * FROM ABILITYSTONEDATA WHERE ENGRAVINGNAME = '{engravingName}'";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
                 Console.WriteLine(sql);
@@ -103,7 +103,7 @@ namespace LostarkLogProject.AbilityStoneLog
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE PERCENTAGE = {percentage}";
+                string sql = $"SELECT * FROM ABILITYSTONEDATA WHERE PERCENTAGE = {percentage}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
                 Console.WriteLine(sql);
@@ -125,7 +125,7 @@ namespace LostarkLogProject.AbilityStoneLog
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE TIMESTAMP BETWEEN {time1.Ticks} AND {time2.Ticks} AND PERCENTAGE = {percentage}";
+                string sql = $"SELECT * FROM ABILITYSTONEDATA WHERE TIMESTAMP BETWEEN {time1.Ticks} AND {time2.Ticks} AND PERCENTAGE = {percentage}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
 
@@ -145,7 +145,7 @@ namespace LostarkLogProject.AbilityStoneLog
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE TIMESTAMP BETWEEN {time1.Ticks} AND {time2.Ticks} AND PERCENTAGE = {percentage} AND ADJUSTMENT = {adjustment}";
+                string sql = $"SELECT * FROM ABILITYSTONEDATA WHERE TIMESTAMP BETWEEN {time1.Ticks} AND {time2.Ticks} AND PERCENTAGE = {percentage} AND ADJUSTMENT = {adjustment}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
 
@@ -165,7 +165,7 @@ namespace LostarkLogProject.AbilityStoneLog
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE TIMESTAMP BETWEEN {time1.Ticks} AND {time2.Ticks} AND PERCENTAGE = {percentage} AND ADJUSTMENT = {adjustment} AND SUCCESS = {success}";
+                string sql = $"SELECT * FROM ABILITYSTONEDATA WHERE TIMESTAMP BETWEEN {time1.Ticks} AND {time2.Ticks} AND PERCENTAGE = {percentage} AND ADJUSTMENT = {adjustment} AND SUCCESS = {success}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
 
@@ -185,7 +185,7 @@ namespace LostarkLogProject.AbilityStoneLog
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE SUCCESS = {success}";
+                string sql = $"SELECT * FROM ABILITYSTONEDATA WHERE SUCCESS = {success}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
 
@@ -205,7 +205,7 @@ namespace LostarkLogProject.AbilityStoneLog
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE PERCENTAGE = {percentage} AND ADJUSTMENT = {adjustment}";
+                string sql = $"SELECT * FROM ABILITYSTONEDATA WHERE PERCENTAGE = {percentage} AND ADJUSTMENT = {adjustment}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
 
@@ -227,7 +227,7 @@ namespace LostarkLogProject.AbilityStoneLog
             {
                 DataSet ds = new DataSet();
 
-                string sql = $"SELECT * FROM ENGRAVINGDATA WHERE PERCENTAGE = {percentage} AND ADJUSTMENT = {adjustment} AND SUCCESS = {success}";
+                string sql = $"SELECT * FROM ABILITYSTONEDATA WHERE PERCENTAGE = {percentage} AND ADJUSTMENT = {adjustment} AND SUCCESS = {success}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
 
@@ -250,7 +250,7 @@ namespace LostarkLogProject.AbilityStoneLog
                 using (SQLiteConnection conn = new SQLiteConnection(DBpath))
                 {
                     conn.Open();
-                    string sql = $"INSERT INTO ENGRAVINGDATA('PERCENTAGE', 'ENGRAVINGNAME', 'SUCCESS', 'ADJUSTMENT', 'DIGIT', 'TIMESTAMP') VALUES ({percentage}, '{engravingName}', {success}, {adjustment}, {digit}, {DateTime.Now.Ticks})";
+                    string sql = $"INSERT INTO ABILITYSTONEDATA('PERCENTAGE', 'ENGRAVINGNAME', 'SUCCESS', 'ADJUSTMENT', 'DIGIT', 'TIMESTAMP') VALUES ({percentage}, '{engravingName}', {success}, {adjustment}, {digit}, {DateTime.Now.Ticks})";
                     SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                     Console.WriteLine(cmd.CommandText);
                     cmd.ExecuteNonQuery();

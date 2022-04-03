@@ -5,18 +5,22 @@ using LostarkLogProject.Properties;
 using LostarkLogProject.TripodLog;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Net;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace LostarkLogProject
 {
     public partial class MainForm : Form
     {
-        bool TestMode = true;
+        bool TestMode = false;
         public MainForm()
         {
             InitializeComponent();
+            Init();
+            StartLogger();
         }
-
+        
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect
                                                       , int nTopRect
@@ -28,15 +32,13 @@ namespace LostarkLogProject
         private void MainForm_Load(object sender, EventArgs e)
         {
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-            Init();
-            StartLoggerAsync();
         }
 
         DashBoardPage dashboard;
         ResourceLoader resourceLoader;
         DetailPage detailPage;
         TripodDashBoard tripodDashBoard;
-        FirestoreDb firestoreDb;
+        ProcessDetector processDetector;
 
         private void Init()
         {
@@ -61,33 +63,35 @@ namespace LostarkLogProject
 
             string path = AppDomain.CurrentDomain.BaseDirectory + @"lostarklogproject-18d6693e2647.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-            firestoreDb = FirestoreDb.Create("lostarklogproject");
 
         }
 
-        private async Task StartLoggerAsync()
+        
+        private void VersionChecker()
         {
-            if (!TestModeCheck())
+            //버전체크
+            WebRequest request = WebRequest.Create("https://lostarklogproject.web.app/VersionCheck.html");
+            WebResponse response = request.GetResponse();
+            Stream dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStream);
+
+            string value = reader.ReadToEnd();
+
+            var systemVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+
+            if (!value.Contains(systemVer.ToString()))
             {
-                // 버전 확인
-                var version = firestoreDb.Collection("Version").Document("VersionCheck");
-                var snap = await version.GetSnapshotAsync();
+                MessageBox.Show("업데이트가 있습니다. 최신버전을 이용해주세요!");
+                System.Diagnostics.Process.Start(new ProcessStartInfo("https://github.com/Heinul/LostarkLogProject/releases") { UseShellExecute = true });
+                processDetector.Stop();
 
-                if (snap.Exists)
-                {
-                    var systemVer = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                    var firebaseVersion = snap.ToDictionary();
-                    var value = firebaseVersion["Latest"].ToString();
-
-                    if (!value.Equals(systemVer.ToString()))
-                    {
-                        MessageBox.Show("업데이트가 있습니다. 최신버전을 이용해주세요!");
-                        System.Diagnostics.Process.Start(new ProcessStartInfo("https://github.com/Heinul/LostarkLogProject/releases") { UseShellExecute = true });
-                        return;
-                    }
-                }
             }
+        }
 
+        private void StartLogger()
+        {
+            // 버전 체크
+            new Thread(VersionChecker).Start();
             //해상도 확인
             if (Screen.PrimaryScreen.Bounds.Height != 1080 && Screen.PrimaryScreen.Bounds.Height != 1440 && Screen.PrimaryScreen.Bounds.Height != 2160 && Screen.PrimaryScreen.Bounds.Height != 2880)
             {
@@ -100,14 +104,14 @@ namespace LostarkLogProject
                 {
                     if (!TestModeCheck())
                     {
-                        ProcessDetector processDetector = new ProcessDetector(this, resourceLoader, firestoreDb);
+                        processDetector = new ProcessDetector(this, resourceLoader, this.webView21);
                         processDetector.Run();
                     }
 
                     if (TestModeCheck())
                     {
                         //프로세스 탐지 과정 건너뛰고 바로 이미지 서치 시작
-                        ProcessDetector processDetector = new ProcessDetector(this, resourceLoader, firestoreDb);
+                        ProcessDetector processDetector = new ProcessDetector(this, resourceLoader, this.webView21);
                         processDetector.TestRun();
                     }
 
@@ -228,15 +232,6 @@ namespace LostarkLogProject
         private void GraphMouseMove(object sender, EventArgs e)
         {
             dashboard.GraphMouseMove(sender, e, DashboardGraphToolTip);
-        }
-
-        public void SetImageAnalysisStateText(string str)
-        {
-            this.Invoke(new Action(delegate ()
-            {
-                ImageAnalysisState1.Text = str;
-                ImageAnalysisState2.Text = str;
-            }));
         }
 
         private void WindowsAutoStartCheckBox_CheckedChanged(object sender, EventArgs e)

@@ -8,10 +8,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Version>$(VersionPrefix)</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <Platforms>AnyCPU;x64</Platforms>
+    <Configurations>Debug;Release;x64</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="lostarklogproject-18d6693e2647.json" />
     <None Remove="OpenCvSharpExtern.dll" />
     <None Remove="Resources\25p.png" />
     <None Remove="Resources\35p.png" />
@@ -80,9 +81,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="lostarklogproject-18d6693e2647.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\25p.png" />
     <EmbeddedResource Include="Resources\35p.png" />
     <EmbeddedResource Include="Resources\45p.png" />
@@ -174,6 +172,7 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Cloud.Firestore" Version="2.5.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1150.38" />
     <PackageReference Include="OpenCvSharp4" Version="4.5.5.20211231" />
     <PackageReference Include="OpenCvSharp4.Extensions" Version="4.5.5.20211231" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.115.5" />

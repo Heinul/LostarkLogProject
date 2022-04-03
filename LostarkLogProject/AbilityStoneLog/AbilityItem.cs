@@ -1,5 +1,6 @@
 ﻿using Google.Cloud.Firestore;
 using LostarkLogProject.Properties;
+using Microsoft.Web.WebView2.WinForms;
 
 namespace LostarkLogProject.AbilityStoneLog
 {
@@ -10,13 +11,15 @@ namespace LostarkLogProject.AbilityStoneLog
         private bool success = false;
         private bool adjustment = false; //true 강화, false 감소
         private int digit = 0;
+        MainForm mainForm;
+        WebView2 webBrowser;
         AbilityStoneDBManager database = null;
-        FirestoreDb firestoreDb = null;
 
-        public AbilityItem(int percentage, string engravingName, bool success, bool adjustment, int digit, FirestoreDb firestoreDb)
+        public AbilityItem(int percentage, string engravingName, bool success, bool adjustment, int digit, MainForm mainForm, WebView2 webBrowser)
         {
-            this.firestoreDb = firestoreDb;
             this.database = new AbilityStoneDBManager();
+            this.mainForm = mainForm;
+            this.webBrowser = webBrowser;
 
             this.percentage = percentage;
             this.engravingName = engravingName;
@@ -32,18 +35,28 @@ namespace LostarkLogProject.AbilityStoneLog
 
         public void SendData()
         {
-            CollectionReference coll = firestoreDb.Collection($"EngravingDataBase");
-            Dictionary<string, object> data = new Dictionary<string, object>()
+            string url = "https://lostarklogproject.web.app/SendToServerTripod.html";
+            string data = $"?Adjustment={adjustment}&Digit={digit}&EngravingName={engravingName}&Percentage={percentage}&UID={ Settings.Default.UID}";
+            string str = url + data;
+
+            mainForm.Invoke(new Action(delegate ()
             {
-                {"Percentage", percentage},
-                {"EngravingName", engravingName},
-                {"Success", success },
-                {"Adjusment", adjustment},
-                {"Digit", digit},
-                {"UID", Settings.Default.UID },
-                {"Timestamp", Timestamp.FromDateTime(DateTime.UtcNow) }
-            };
-            coll.AddAsync(data);
+                webBrowser.Source = new System.Uri(str, System.UriKind.Absolute);
+                webBrowser.Source = new System.Uri("https://lostarklogproject.web.app/");
+            }));
+
+            //CollectionReference coll = firestoreDb.Collection($"AbilityStoneDataBase");
+            //Dictionary<string, object> data = new Dictionary<string, object>()
+            //{
+            //    {"Percentage", percentage},
+            //    {"EngravingName", engravingName},
+            //    {"Success", success },
+            //    {"Adjustment", adjustment},
+            //    {"Digit", digit},
+            //    {"UID", Settings.Default.UID },
+            //    {"Timestamp", Timestamp.FromDateTime(DateTime.UtcNow) }
+            //};
+            //coll.AddAsync(data);
             Console.WriteLine("Send To Server With AbilityStone");
         }
 

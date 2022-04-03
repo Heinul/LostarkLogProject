@@ -56,7 +56,7 @@ namespace LostarkLogProject.TripodLog
                 string sql = $"SELECT * FROM TRIPODDATA WHERE PERCENTAGE = {percentage}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
-                Console.WriteLine(sql);
+                //Console.WriteLine(sql);
 
                 if (ds.Tables.Count > 0)
                     return ds.Tables[0].Rows;
@@ -79,7 +79,7 @@ namespace LostarkLogProject.TripodLog
                 string sql = $"SELECT * FROM TRIPODDATA WHERE PERCENTAGE = {percentage} AND ADDITIONALMATERIAL = {material}";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
-                Console.WriteLine(sql);
+                //Console.WriteLine(sql);
 
                 if (ds.Tables.Count > 0)
                     return ds.Tables[0].Rows;
@@ -102,7 +102,7 @@ namespace LostarkLogProject.TripodLog
                 string sql = $"SELECT * FROM TRIPODDATA WHERE PERCENTAGE = {percentage} AND ADDITIONALMATERIAL = {material} AND SUCCESS = {success} ";
                 adapter = new SQLiteDataAdapter(sql, DBpath);
                 adapter.Fill(ds);
-                Console.WriteLine(sql);
+                //Console.WriteLine(sql);
 
                 if (ds.Tables.Count > 0)
                     return ds.Tables[0].Rows;

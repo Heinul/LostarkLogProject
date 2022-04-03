@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Microsoft.Web.WebView2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,17 +12,19 @@ namespace LostarkLogProject.ControllFuncion
     internal class ProcessDetector
     {
         bool lostarkState = false;
+        bool threadState = false;
         MainForm mainForm;
         DisplayCapture displayCapture;
-        public ProcessDetector(MainForm mainForm, ResourceLoader resourceLoader, FirestoreDb firestoreDb)
+
+        public ProcessDetector(MainForm mainForm, ResourceLoader resourceLoader, WebView2 webView21)
         {
             this.mainForm = mainForm;
-            displayCapture = new DisplayCapture(mainForm, resourceLoader, firestoreDb);
+            displayCapture = new DisplayCapture(mainForm, resourceLoader, webView21);
         }
 
         private void ProcessDetection()
         {
-            while (true)
+            while (threadState)
             {
                 Process[] processList = Process.GetProcessesByName("LostArk");
                 if (processList.Length > 0)
@@ -50,8 +53,14 @@ namespace LostarkLogProject.ControllFuncion
 
         public void Run()
         {
+            threadState = true;
             Thread thread = new Thread(ProcessDetection);
             thread.Start();
+        }
+
+        public void Stop()
+        {
+            threadState = false;
         }
 
         public void TestRun()

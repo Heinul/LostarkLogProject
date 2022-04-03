@@ -1,6 +1,7 @@
 ﻿using Google.Cloud.Firestore;
 using LostarkLogProject.AbilityStoneLog;
 using LostarkLogProject.TripodLog;
+using Microsoft.Web.WebView2.WinForms;
 using OpenCvSharp;
 
 namespace LostarkLogProject.ControllFunction
@@ -9,17 +10,18 @@ namespace LostarkLogProject.ControllFunction
     {
         MainForm mainForm;
         ResourceLoader resourceLoader;
-        FirestoreDb firestoreDb;
+        WebView2 webBrowser;
 
-        public ImageAnalysis(MainForm mainForm, ResourceLoader resourceLoader, FirestoreDb firestoreDb)
+        public ImageAnalysis(MainForm mainForm, ResourceLoader resourceLoader, WebView2 webBrowser)
         {
             this.mainForm = mainForm;
             this.resourceLoader = resourceLoader;
-            this.firestoreDb = firestoreDb;
+            this.webBrowser = webBrowser;
 
             for (int i = 0; i < 3; i++)
                 previousEngravingSuccessData[i] = new int[10];
         }
+
         Queue<Mat> displayQueue = new Queue<Mat>();
         Queue<int> tokenQueue = new Queue<int>();
 
@@ -447,7 +449,7 @@ namespace LostarkLogProject.ControllFunction
         private void PushAbilityStoneData(int percentage, string engravingName, bool success, bool adjustment, int digit)
         {
             //큐에 데이터 올리고 다른 스레드로 저장 작업 처리
-            AbilityItem data = new AbilityItem(percentage, engravingName, success, adjustment, digit, firestoreDb);
+            AbilityItem data = new AbilityItem(percentage, engravingName, success, adjustment, digit, mainForm, webBrowser);
             abilityItemQueue.Enqueue(data);
         }
         #endregion
@@ -515,7 +517,7 @@ namespace LostarkLogProject.ControllFunction
         Queue<TripodItem> tripodItemQueue = new Queue<TripodItem>();
         private void PushTripodData(bool previousTripodSuccess, int previousTripodPercentage, bool additionalMeterial)
         {
-            TripodItem item = new TripodItem(previousTripodSuccess, previousTripodPercentage, additionalMeterial, firestoreDb);
+            TripodItem item = new TripodItem(previousTripodSuccess, previousTripodPercentage, additionalMeterial, webBrowser, mainForm);
             tripodItemQueue.Enqueue(item);
         }
         #endregion
@@ -548,7 +550,7 @@ namespace LostarkLogProject.ControllFunction
                     if (abilityItemQueue.Count > 0)
                     {
                         var item = abilityItemQueue.Dequeue();
-
+                        item.SendData();
                         item.SaveData();
                         mainForm.AddItemToListBox(item.GetEngravingName(), item.GetPercentage(), item.GetSuccess());
                     }
@@ -556,6 +558,7 @@ namespace LostarkLogProject.ControllFunction
                     if (tripodItemQueue.Count > 0)
                     {
                         var item = tripodItemQueue.Dequeue();
+                        item.SendData();
                         item.SaveData();
                     }
                 }

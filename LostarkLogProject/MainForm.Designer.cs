@@ -135,6 +135,7 @@
             this.TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.SideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -173,6 +174,7 @@
             this.tabPage4.SuspendLayout();
             this.PowerGroupBox.SuspendLayout();
             this.TrayMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
             // 
             // MousePos
@@ -204,6 +206,8 @@
             // Option
             // 
             this.Option.BackColor = System.Drawing.Color.Transparent;
+            this.Option.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Option.BackgroundImage")));
+            this.Option.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Option.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Option.FlatAppearance.BorderSize = 0;
             this.Option.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
@@ -211,7 +215,6 @@
             this.Option.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Option.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Option.ForeColor = System.Drawing.Color.White;
-            this.Option.Image = ((System.Drawing.Image)(resources.GetObject("Option.Image")));
             this.Option.Location = new System.Drawing.Point(0, 425);
             this.Option.Name = "Option";
             this.Option.Size = new System.Drawing.Size(55, 55);
@@ -222,12 +225,13 @@
             // Exit
             // 
             this.Exit.BackColor = System.Drawing.Color.Transparent;
+            this.Exit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Exit.BackgroundImage")));
+            this.Exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Exit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Exit.FlatAppearance.BorderSize = 0;
             this.Exit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.Exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Exit.Image = ((System.Drawing.Image)(resources.GetObject("Exit.Image")));
             this.Exit.Location = new System.Drawing.Point(0, 480);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(55, 60);
@@ -276,6 +280,8 @@
             // Home
             // 
             this.Home.BackColor = System.Drawing.Color.Transparent;
+            this.Home.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Home.BackgroundImage")));
+            this.Home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Home.Dock = System.Windows.Forms.DockStyle.Top;
             this.Home.FlatAppearance.BorderSize = 0;
             this.Home.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
@@ -283,7 +289,6 @@
             this.Home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Home.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Home.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Home.Image = ((System.Drawing.Image)(resources.GetObject("Home.Image")));
             this.Home.Location = new System.Drawing.Point(0, 50);
             this.Home.Name = "Home";
             this.Home.Size = new System.Drawing.Size(55, 55);
@@ -293,8 +298,9 @@
             // 
             // LogoImage
             // 
+            this.LogoImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LogoImage.BackgroundImage")));
+            this.LogoImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.LogoImage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LogoImage.Image = ((System.Drawing.Image)(resources.GetObject("LogoImage.Image")));
             this.LogoImage.Location = new System.Drawing.Point(0, 0);
             this.LogoImage.Name = "LogoImage";
             this.LogoImage.Size = new System.Drawing.Size(55, 50);
@@ -353,7 +359,6 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage1.BackgroundImage")));
             this.tabPage1.Controls.Add(this.AbilityStoneDashboardText);
             this.tabPage1.Controls.Add(this.AbilityStonePage2Button);
             this.tabPage1.Controls.Add(this.ImageAnalysisState1);
@@ -403,7 +408,6 @@
             // AbilityStonePage2Button
             // 
             this.AbilityStonePage2Button.BackColor = System.Drawing.Color.Transparent;
-            this.AbilityStonePage2Button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AbilityStonePage2Button.BackgroundImage")));
             this.AbilityStonePage2Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AbilityStonePage2Button.FlatAppearance.BorderSize = 0;
             this.AbilityStonePage2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -686,7 +690,6 @@
             // 
             // ReductionGraph25
             // 
-            this.ReductionGraph25.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph25.Image")));
             this.ReductionGraph25.Location = new System.Drawing.Point(465, 486);
             this.ReductionGraph25.Name = "ReductionGraph25";
             this.ReductionGraph25.Size = new System.Drawing.Size(26, 0);
@@ -697,7 +700,6 @@
             // 
             // EnhanceGraph25
             // 
-            this.EnhanceGraph25.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph25.Image")));
             this.EnhanceGraph25.Location = new System.Drawing.Point(433, 486);
             this.EnhanceGraph25.Name = "EnhanceGraph25";
             this.EnhanceGraph25.Size = new System.Drawing.Size(26, 0);
@@ -708,7 +710,6 @@
             // 
             // ReductionGraph35
             // 
-            this.ReductionGraph35.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph35.Image")));
             this.ReductionGraph35.Location = new System.Drawing.Point(388, 486);
             this.ReductionGraph35.Name = "ReductionGraph35";
             this.ReductionGraph35.Size = new System.Drawing.Size(26, 0);
@@ -719,7 +720,6 @@
             // 
             // EnhanceGraph35
             // 
-            this.EnhanceGraph35.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph35.Image")));
             this.EnhanceGraph35.Location = new System.Drawing.Point(356, 486);
             this.EnhanceGraph35.Name = "EnhanceGraph35";
             this.EnhanceGraph35.Size = new System.Drawing.Size(26, 0);
@@ -730,7 +730,6 @@
             // 
             // ReductionGraph45
             // 
-            this.ReductionGraph45.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph45.Image")));
             this.ReductionGraph45.Location = new System.Drawing.Point(316, 486);
             this.ReductionGraph45.Name = "ReductionGraph45";
             this.ReductionGraph45.Size = new System.Drawing.Size(26, 0);
@@ -741,7 +740,6 @@
             // 
             // EnhanceGraph45
             // 
-            this.EnhanceGraph45.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph45.Image")));
             this.EnhanceGraph45.Location = new System.Drawing.Point(284, 486);
             this.EnhanceGraph45.Name = "EnhanceGraph45";
             this.EnhanceGraph45.Size = new System.Drawing.Size(26, 0);
@@ -752,7 +750,6 @@
             // 
             // ReductionGraph55
             // 
-            this.ReductionGraph55.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph55.Image")));
             this.ReductionGraph55.Location = new System.Drawing.Point(239, 486);
             this.ReductionGraph55.Name = "ReductionGraph55";
             this.ReductionGraph55.Size = new System.Drawing.Size(26, 0);
@@ -763,7 +760,6 @@
             // 
             // EnhanceGraph55
             // 
-            this.EnhanceGraph55.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph55.Image")));
             this.EnhanceGraph55.Location = new System.Drawing.Point(207, 486);
             this.EnhanceGraph55.Name = "EnhanceGraph55";
             this.EnhanceGraph55.Size = new System.Drawing.Size(26, 0);
@@ -774,7 +770,6 @@
             // 
             // ReductionGraph65
             // 
-            this.ReductionGraph65.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph65.Image")));
             this.ReductionGraph65.Location = new System.Drawing.Point(164, 486);
             this.ReductionGraph65.Name = "ReductionGraph65";
             this.ReductionGraph65.Size = new System.Drawing.Size(26, 0);
@@ -785,7 +780,6 @@
             // 
             // EnhanceGraph65
             // 
-            this.EnhanceGraph65.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph65.Image")));
             this.EnhanceGraph65.Location = new System.Drawing.Point(132, 486);
             this.EnhanceGraph65.Name = "EnhanceGraph65";
             this.EnhanceGraph65.Size = new System.Drawing.Size(26, 0);
@@ -796,7 +790,6 @@
             // 
             // ReductionGraph75
             // 
-            this.ReductionGraph75.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph75.Image")));
             this.ReductionGraph75.Location = new System.Drawing.Point(91, 486);
             this.ReductionGraph75.Name = "ReductionGraph75";
             this.ReductionGraph75.Size = new System.Drawing.Size(26, 0);
@@ -808,7 +801,6 @@
             // EnhanceGraph75
             // 
             this.EnhanceGraph75.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.EnhanceGraph75.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph75.Image")));
             this.EnhanceGraph75.Location = new System.Drawing.Point(58, 486);
             this.EnhanceGraph75.Name = "EnhanceGraph75";
             this.EnhanceGraph75.Size = new System.Drawing.Size(26, 0);
@@ -863,7 +855,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage2.BackgroundImage")));
             this.tabPage2.Controls.Add(this.ImageAnalysisState2);
             this.tabPage2.Controls.Add(this.Detail25);
             this.tabPage2.Controls.Add(this.Detail35);
@@ -1005,7 +996,6 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
-            this.tabPage3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage3.BackgroundImage")));
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabPage3.Controls.Add(this.Tripod100CountLabel);
             this.tabPage3.Controls.Add(this.Tripod60upCountLabel);
@@ -1332,7 +1322,6 @@
             // 
             // TrayIcon
             // 
-            this.TrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("TrayIcon.Icon")));
             this.TrayIcon.Text = "LostArkLog";
             this.TrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIconMouseDoubleClick);
             // 
@@ -1358,6 +1347,18 @@
             this.exitToolStripMenuItem.Text = "종료";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
+            // webView21
+            // 
+            this.webView21.BackColor = System.Drawing.Color.White;
+            this.webView21.CreationProperties = null;
+            this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webView21.Location = new System.Drawing.Point(55, 0);
+            this.webView21.Name = "webView21";
+            this.webView21.Size = new System.Drawing.Size(770, 540);
+            this.webView21.TabIndex = 10;
+            this.webView21.ZoomFactor = 1D;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1365,9 +1366,9 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(825, 540);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.webView21);
             this.Controls.Add(this.SideMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1420,6 +1421,7 @@
             this.PowerGroupBox.ResumeLayout(false);
             this.PowerGroupBox.PerformLayout();
             this.TrayMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1530,5 +1532,6 @@
         private Label Tripod15PercentLabel;
         private Label Tripod30upPercentLabel;
         private Label Tripod5PercentLabel;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
     }
 }

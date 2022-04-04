@@ -10,6 +10,8 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <Configurations>Debug;Release;x64</Configurations>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <PackageIcon></PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -78,6 +80,7 @@
     <Content Include="OpenCvSharpExtern.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>

@@ -13,7 +13,7 @@ namespace LostarkLogProject
 {
     public partial class MainForm : Form
     {
-        bool TestMode = false;
+        bool TestMode = true;
         public MainForm()
         {
             InitializeComponent();
@@ -43,6 +43,14 @@ namespace LostarkLogProject
 
         private void Init()
         {
+            //중복실행방지
+            Process[] procs = Process.GetProcessesByName("LostarkLogPoject");
+            if (procs.Length > 1)
+            {
+                MessageBox.Show("프로그램이 이미 실행되고 있습니다.\n다시 한번 확인해주시기 바랍니다.");
+                return;
+            }
+
             LoadOption();
             AutoTrayRun();
 

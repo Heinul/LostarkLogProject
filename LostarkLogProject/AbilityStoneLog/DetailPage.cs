@@ -22,7 +22,7 @@ namespace LostarkLogProject.AbilityStoneLog
 
             startDateTimePicker.Value = DateTime.Now.Date;
             this.startDateTimePicker = startDateTimePicker;
-            endDateTimePicker.Value = DateTime.Now;
+            endDateTimePicker.Value = DateTime.Now.Date.AddHours(23.999);
             this.endDateTimePicker = endDateTimePicker;
 
             this.detailPercentage = detailPercentage;

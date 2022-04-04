@@ -28,7 +28,7 @@ namespace LostarkLogProject.TripodLog
         internal void SendData()
         {
             string url = "https://lostarklogproject.web.app/SendToServerTripod.html";
-            string data = $"?Material={additionalMeterial}&Percentage={percentage}&Success={success}&UID={ Settings.Default.UID}0";
+            string data = $"?Material={additionalMeterial}&Percentage={percentage}&Success={success}&UID={ Settings.Default.UID}";
             string str = url + data;
 
             Console.WriteLine(str);

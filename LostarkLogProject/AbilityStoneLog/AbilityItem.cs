@@ -35,28 +35,17 @@ namespace LostarkLogProject.AbilityStoneLog
 
         public void SendData()
         {
-            string url = "https://lostarklogproject.web.app/SendToServerTripod.html";
+            string url = "https://lostarklogproject.web.app/SendToServerAbilityStone.html";
             string data = $"?Adjustment={adjustment}&Digit={digit}&EngravingName={engravingName}&Percentage={percentage}&UID={ Settings.Default.UID}";
             string str = url + data;
 
             mainForm.Invoke(new Action(delegate ()
             {
+                webBrowser.Source = new System.Uri(url, System.UriKind.Absolute);
                 webBrowser.Source = new System.Uri(str, System.UriKind.Absolute);
-                webBrowser.Source = new System.Uri("https://lostarklogproject.web.app/");
             }));
+            //Thread.Sleep(1000);
 
-            //CollectionReference coll = firestoreDb.Collection($"AbilityStoneDataBase");
-            //Dictionary<string, object> data = new Dictionary<string, object>()
-            //{
-            //    {"Percentage", percentage},
-            //    {"EngravingName", engravingName},
-            //    {"Success", success },
-            //    {"Adjustment", adjustment},
-            //    {"Digit", digit},
-            //    {"UID", Settings.Default.UID },
-            //    {"Timestamp", Timestamp.FromDateTime(DateTime.UtcNow) }
-            //};
-            //coll.AddAsync(data);
             Console.WriteLine("Send To Server With AbilityStone");
         }
 

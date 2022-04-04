@@ -19,6 +19,7 @@ namespace LostarkLogProject
             InitializeComponent();
             Init();
             StartLogger();
+            webView21.Source = new Uri("https://lostarklogproject.web.app");
         }
         
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -322,33 +323,35 @@ namespace LostarkLogProject
 
         public void SetStateImage(int stateNum)
         {
-            this.Invoke(new Action(delegate ()
+            if (this.InvokeRequired)
             {
-                switch (stateNum)
+                this.Invoke(new Action(delegate ()
                 {
-                    case 0:
-                        // 로스트아크 실행 대기중
-                        LLStateImage.Image = Properties.Resources.로스트아크_실행_대기중;
-                        break;
-                    case 1:
-                        // 동작 대기중
-                        LLStateImage.Image = Properties.Resources.강화작업_대기중; ;
-                        break;
-                    case 2:
-                        // 어빌리티스톤 세공 인식
-                        LLStateImage.Image = Properties.Resources.어빌리티스톤_세공_기록중;
-                        break;
-                    case 3:
-                        // 트라이포드 부여 인식
-                        LLStateImage.Image = Properties.Resources.트라이포드_부여_기록중;
-                        break;
-                    case 4:
-                        // 에러
-                        LLStateImage.Image = Properties.Resources.에러;
-                        break;
-                }
-            }));
-            
+                    switch (stateNum)
+                    {
+                        case 0:
+                            // 로스트아크 실행 대기중
+                            LLStateImage.Image = Properties.Resources.로스트아크_실행_대기중;
+                            break;
+                        case 1:
+                            // 동작 대기중
+                            LLStateImage.Image = Properties.Resources.강화작업_대기중; ;
+                            break;
+                        case 2:
+                            // 어빌리티스톤 세공 인식
+                            LLStateImage.Image = Properties.Resources.어빌리티스톤_세공_기록중;
+                            break;
+                        case 3:
+                            // 트라이포드 부여 인식
+                            LLStateImage.Image = Properties.Resources.트라이포드_부여_기록중;
+                            break;
+                        case 4:
+                            // 에러
+                            LLStateImage.Image = Properties.Resources.에러;
+                            break;
+                    }
+                }));
+            }
         }
 
         private void UID_Label_Click(object sender, EventArgs e)
@@ -413,6 +416,11 @@ namespace LostarkLogProject
         public bool TestModeCheck()
         {
             return TestMode;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 5;
         }
     }
 }

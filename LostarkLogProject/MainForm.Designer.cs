@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MousePos = new System.Windows.Forms.Label();
             this.SideMenu = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.Option = new System.Windows.Forms.Button();
             this.Exit = new System.Windows.Forms.Button();
             this.TripodDashBorad = new System.Windows.Forms.Button();
@@ -130,12 +131,13 @@
             this.Option_Label3 = new System.Windows.Forms.Label();
             this.WindowsAutoStartCheckBox = new System.Windows.Forms.CheckBox();
             this.Option_Label1 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.DashboardGraphToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.SideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -173,8 +175,9 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.PowerGroupBox.SuspendLayout();
-            this.TrayMenu.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
+            this.TrayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // MousePos
@@ -190,6 +193,7 @@
             // SideMenu
             // 
             this.SideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SideMenu.Controls.Add(this.button1);
             this.SideMenu.Controls.Add(this.Option);
             this.SideMenu.Controls.Add(this.Exit);
             this.SideMenu.Controls.Add(this.TripodDashBorad);
@@ -202,6 +206,17 @@
             this.SideMenu.Size = new System.Drawing.Size(55, 540);
             this.SideMenu.TabIndex = 7;
             this.SideMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 279);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Option
             // 
@@ -327,6 +342,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
             this.tabControl1.Location = new System.Drawing.Point(55, 0);
@@ -359,6 +375,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage1.BackgroundImage")));
             this.tabPage1.Controls.Add(this.AbilityStoneDashboardText);
             this.tabPage1.Controls.Add(this.AbilityStonePage2Button);
             this.tabPage1.Controls.Add(this.ImageAnalysisState1);
@@ -408,6 +425,7 @@
             // AbilityStonePage2Button
             // 
             this.AbilityStonePage2Button.BackColor = System.Drawing.Color.Transparent;
+            this.AbilityStonePage2Button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AbilityStonePage2Button.BackgroundImage")));
             this.AbilityStonePage2Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AbilityStonePage2Button.FlatAppearance.BorderSize = 0;
             this.AbilityStonePage2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -690,6 +708,7 @@
             // 
             // ReductionGraph25
             // 
+            this.ReductionGraph25.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph25.Image")));
             this.ReductionGraph25.Location = new System.Drawing.Point(465, 486);
             this.ReductionGraph25.Name = "ReductionGraph25";
             this.ReductionGraph25.Size = new System.Drawing.Size(26, 0);
@@ -700,6 +719,7 @@
             // 
             // EnhanceGraph25
             // 
+            this.EnhanceGraph25.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph25.Image")));
             this.EnhanceGraph25.Location = new System.Drawing.Point(433, 486);
             this.EnhanceGraph25.Name = "EnhanceGraph25";
             this.EnhanceGraph25.Size = new System.Drawing.Size(26, 0);
@@ -710,6 +730,7 @@
             // 
             // ReductionGraph35
             // 
+            this.ReductionGraph35.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph35.Image")));
             this.ReductionGraph35.Location = new System.Drawing.Point(388, 486);
             this.ReductionGraph35.Name = "ReductionGraph35";
             this.ReductionGraph35.Size = new System.Drawing.Size(26, 0);
@@ -720,6 +741,7 @@
             // 
             // EnhanceGraph35
             // 
+            this.EnhanceGraph35.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph35.Image")));
             this.EnhanceGraph35.Location = new System.Drawing.Point(356, 486);
             this.EnhanceGraph35.Name = "EnhanceGraph35";
             this.EnhanceGraph35.Size = new System.Drawing.Size(26, 0);
@@ -730,6 +752,7 @@
             // 
             // ReductionGraph45
             // 
+            this.ReductionGraph45.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph45.Image")));
             this.ReductionGraph45.Location = new System.Drawing.Point(316, 486);
             this.ReductionGraph45.Name = "ReductionGraph45";
             this.ReductionGraph45.Size = new System.Drawing.Size(26, 0);
@@ -740,6 +763,7 @@
             // 
             // EnhanceGraph45
             // 
+            this.EnhanceGraph45.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph45.Image")));
             this.EnhanceGraph45.Location = new System.Drawing.Point(284, 486);
             this.EnhanceGraph45.Name = "EnhanceGraph45";
             this.EnhanceGraph45.Size = new System.Drawing.Size(26, 0);
@@ -750,6 +774,7 @@
             // 
             // ReductionGraph55
             // 
+            this.ReductionGraph55.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph55.Image")));
             this.ReductionGraph55.Location = new System.Drawing.Point(239, 486);
             this.ReductionGraph55.Name = "ReductionGraph55";
             this.ReductionGraph55.Size = new System.Drawing.Size(26, 0);
@@ -760,6 +785,7 @@
             // 
             // EnhanceGraph55
             // 
+            this.EnhanceGraph55.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph55.Image")));
             this.EnhanceGraph55.Location = new System.Drawing.Point(207, 486);
             this.EnhanceGraph55.Name = "EnhanceGraph55";
             this.EnhanceGraph55.Size = new System.Drawing.Size(26, 0);
@@ -770,6 +796,7 @@
             // 
             // ReductionGraph65
             // 
+            this.ReductionGraph65.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph65.Image")));
             this.ReductionGraph65.Location = new System.Drawing.Point(164, 486);
             this.ReductionGraph65.Name = "ReductionGraph65";
             this.ReductionGraph65.Size = new System.Drawing.Size(26, 0);
@@ -780,6 +807,7 @@
             // 
             // EnhanceGraph65
             // 
+            this.EnhanceGraph65.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph65.Image")));
             this.EnhanceGraph65.Location = new System.Drawing.Point(132, 486);
             this.EnhanceGraph65.Name = "EnhanceGraph65";
             this.EnhanceGraph65.Size = new System.Drawing.Size(26, 0);
@@ -790,6 +818,7 @@
             // 
             // ReductionGraph75
             // 
+            this.ReductionGraph75.Image = ((System.Drawing.Image)(resources.GetObject("ReductionGraph75.Image")));
             this.ReductionGraph75.Location = new System.Drawing.Point(91, 486);
             this.ReductionGraph75.Name = "ReductionGraph75";
             this.ReductionGraph75.Size = new System.Drawing.Size(26, 0);
@@ -801,6 +830,7 @@
             // EnhanceGraph75
             // 
             this.EnhanceGraph75.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EnhanceGraph75.Image = ((System.Drawing.Image)(resources.GetObject("EnhanceGraph75.Image")));
             this.EnhanceGraph75.Location = new System.Drawing.Point(58, 486);
             this.EnhanceGraph75.Name = "EnhanceGraph75";
             this.EnhanceGraph75.Size = new System.Drawing.Size(26, 0);
@@ -855,6 +885,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage2.BackgroundImage")));
             this.tabPage2.Controls.Add(this.ImageAnalysisState2);
             this.tabPage2.Controls.Add(this.Detail25);
             this.tabPage2.Controls.Add(this.Detail35);
@@ -996,6 +1027,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage3.BackgroundImage")));
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabPage3.Controls.Add(this.Tripod100CountLabel);
             this.tabPage3.Controls.Add(this.Tripod60upCountLabel);
@@ -1320,8 +1352,31 @@
             this.Option_Label1.TabIndex = 0;
             this.Option_Label1.Text = "일반";
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.webView21);
+            this.tabPage5.Location = new System.Drawing.Point(4, 5);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(762, 531);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // webView21
+            // 
+            this.webView21.BackColor = System.Drawing.Color.White;
+            this.webView21.CreationProperties = null;
+            this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webView21.Location = new System.Drawing.Point(0, 0);
+            this.webView21.Name = "webView21";
+            this.webView21.Size = new System.Drawing.Size(762, 531);
+            this.webView21.TabIndex = 13;
+            this.webView21.ZoomFactor = 1D;
+            // 
             // TrayIcon
             // 
+            this.TrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("TrayIcon.Icon")));
             this.TrayIcon.Text = "LostArkLog";
             this.TrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIconMouseDoubleClick);
             // 
@@ -1347,18 +1402,6 @@
             this.exitToolStripMenuItem.Text = "종료";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // webView21
-            // 
-            this.webView21.BackColor = System.Drawing.Color.White;
-            this.webView21.CreationProperties = null;
-            this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webView21.Location = new System.Drawing.Point(55, 0);
-            this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(770, 540);
-            this.webView21.TabIndex = 10;
-            this.webView21.ZoomFactor = 1D;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1366,9 +1409,9 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(825, 540);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.webView21);
             this.Controls.Add(this.SideMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1420,8 +1463,9 @@
             this.tabPage4.PerformLayout();
             this.PowerGroupBox.ResumeLayout(false);
             this.PowerGroupBox.PerformLayout();
-            this.TrayMenu.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
+            this.TrayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1532,6 +1576,8 @@
         private Label Tripod15PercentLabel;
         private Label Tripod30upPercentLabel;
         private Label Tripod5PercentLabel;
+        private Button button1;
+        private TabPage tabPage5;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
     }
 }

@@ -28,26 +28,16 @@ namespace LostarkLogProject.TripodLog
         internal void SendData()
         {
             string url = "https://lostarklogproject.web.app/SendToServerTripod.html";
-            string data = $"?Material={additionalMeterial}&Percentage={percentage}&Success={success}&UID={ Settings.Default.UID}";
+            string data = $"?Material={additionalMeterial}&Percentage={percentage}&Success={success}&UID={ Settings.Default.UID}0";
             string str = url + data;
 
+            Console.WriteLine(str);
             mainForm.Invoke(new Action(delegate ()
             {
+                webBrowser.Source = new System.Uri(url, System.UriKind.Absolute);
                 webBrowser.Source = new System.Uri(str, System.UriKind.Absolute);
-                webBrowser.Source = new System.Uri("https://lostarklogproject.web.app/");
             }));
 
-            /*CollectionReference coll = firestoreDb.Collection($"TripodDataBase");
-            Dictionary<string, object> data = new Dictionary<string, object>()
-            {
-                {"Percentage", percentage},
-                {"Success", success },
-                {"Material", additionalMeterial },
-                {"UID", Settings.Default.UID },
-                {"Timestamp", Timestamp.FromDateTime(DateTime.UtcNow) }
-            };
-            coll.AddAsync(data);
-            */
             Console.WriteLine("Send To Server With Tripod");
         }
 

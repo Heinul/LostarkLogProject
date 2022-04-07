@@ -1,5 +1,5 @@
 # LostarkLogProject
-로스트아크에서 발생하는 다양한 일들을 기록하고 분석합니다.
+로스트아크에서 제공하지 않는 확률에 대한 로그를 생성하고 시각화하는 프로젝트
 
 ## 기능
 1. 어빌리티스톤 세공 기록, 시각화(2022-03-14)
@@ -16,6 +16,13 @@
 - .Net 4.7 설치가 필요합니다. 설치는 [여기](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472) 혹은 프로그램 설치시 안내가 나오는 사이트에서 설치 가능합니다.
 - 아래 이미지 클릭시 .net 설치 사이트로 이동합니다.
 [![화면 캡처 2022-03-19 180514](https://user-images.githubusercontent.com/100503773/159114996-2669655b-0c9d-40de-b35f-9d2ccfd4af39.png)](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472)
+
+# 프로그램 이미지
+![Screenshot 2022-04-07 오전 9_06_00](https://user-images.githubusercontent.com/100503773/162094476-e65086f8-ce09-4ace-8269-e9376a810553.png)
+![Screenshot 2022-04-07 오전 9_06_10](https://user-images.githubusercontent.com/100503773/162094479-d854eca1-5da8-464b-9e82-a92d54a99d4a.png)
+![Screenshot 2022-04-07 오전 9_06_14](https://user-images.githubusercontent.com/100503773/162094483-8ad07bee-7c59-43b8-b492-219886d77b62.png)
+![Screenshot 2022-04-07 오전 9_06_21](https://user-images.githubusercontent.com/100503773/162094486-9310508e-1add-4792-aba0-671999f44cd5.png)
+![Screenshot 2022-04-07 오전 9_06_26](https://user-images.githubusercontent.com/100503773/162094489-d9d4df03-2dfa-4324-8ae8-5416e1bfffb4.png)
 
 # 문의
 henull.play@gmail.com으로 문의사항 및 개선의견을 받고있습니다.

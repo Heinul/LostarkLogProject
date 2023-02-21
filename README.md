@@ -1,3 +1,6 @@
+#Close
+현재 해당 프로젝트는 종료된 상태입니다.
+
 # LostarkLogProject
 로스트아크에서 제공하지 않는 확률에 대한 로그를 생성하고 시각화하는 프로젝트
 
@@ -25,4 +28,4 @@
 ![Screenshot 2022-04-07 오전 9_06_26](https://user-images.githubusercontent.com/100503773/162094489-d9d4df03-2dfa-4324-8ae8-5416e1bfffb4.png)
 
 ## 문의
-henull.play@gmail.com으로 문의사항 및 개선의견을 받고있습니다.
+

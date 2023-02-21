@@ -1,4 +1,4 @@
-#Close
+# Close
 현재 해당 프로젝트는 종료된 상태입니다.
 
 # LostarkLogProject
